@@ -17,7 +17,7 @@ public class EscapeChar {
 		 	ex) abcd\r12; 12cd
 		*/
 		
-		System.out.println("C:\\Program Files\\AdoptOpenJDK");
+		
 	}
 
 }
