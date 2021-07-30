@@ -85,7 +85,7 @@ public class PracWHILE {
 	
 	public static void ex4() {
 		int num1,num2,num3;
-		int count=0;
+		int count=0; // num1 ~ num2 사이의 값 출력 시 카운팅 횟수
 		
 		System.out.print("최소값 : ");
 		num1=sc.nextInt(); sc.nextLine();
@@ -107,12 +107,16 @@ public class PracWHILE {
 		
 		System.out.print("while문 결과\n");
 		int i=num1;
+		
+		count=0; // for문과 공유하기 때문에 초기에 설정한 것처럼 0으로 초기화 해서 while문에서 사용
+		
 		while(i<=num2) {
 			System.out.print(i+"\t");
-			count+=1;
+			count+=1; // 숫자 출력마다 개수 카운팅
 			i++;
-			if(count%num3==1) {
-			System.out.print("\n");
+			if(count==num3) { // 카운팅 수와 열 수가 동일 할 때
+				System.out.print("\n"); // 개행
+				count=0; // 다시 카운팅 횟수를 0으로 초기화하여 다음 줄에서 다시 1부터 카운트하여 열수와 동일할 때 개행시킴.
 			}
 		}
 		
@@ -132,7 +136,7 @@ public class PracWHILE {
 		System.out.print("for문 결과\n");
 		for(int i=1;i<=count;i++) {
 			System.out.print(lnum+num*i+" ");
-			if(i%5==0) {
+			if(i%5==0) { 
 				System.out.print("\n");
 			}
 		}
@@ -141,12 +145,13 @@ public class PracWHILE {
 		
 		System.out.print("while문 결과\n");
 		int j=1;
-		while(j<=count) {
+		while(j<=count) { // 출력되는 값에 대한 위치 지정
 			System.out.print(lnum+num*j+" ");
-			j++;
-			if(j%5==1) {
+			if(j%5==0) {
+				
 				System.out.print("\n");
 			}
+			j++;
 		}
 
 	}
@@ -183,6 +188,7 @@ public class PracWHILE {
 		
 		System.out.print("for문 결과\n");
 		count=0; // while문 for문 결과 동시 비교로 인해 초기화 한다.
+		
 		for(int i=0;i<len;i++) { // 문자 위치 한 개씩 
 			switch(str.charAt(i)) { // a,e,i,o,u와 비교 하여 있으면 count 1씩 증가
 			case 'a':
@@ -199,16 +205,14 @@ public class PracWHILE {
 		}
 		System.out.println("문자열 내 \'a, e, i, o, u\' 개수는 "+count+" 입니다.");
 		
-		
-		
 	}
 	
 	public static void main(String[] args) {
 		//ex1();
 		//ex2();
-		ex3();
+		//ex3();
 		//ex4();
-		//ex5();
+		ex5();
 		//ex6();
 
 	}
