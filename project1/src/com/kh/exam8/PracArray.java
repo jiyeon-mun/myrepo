@@ -340,18 +340,19 @@ public class PracArray {
 		System.out.print(": ");
 		text = sc.nextLine();
 		
-		
-		
 	}
 	
-	public static void ex() {
+	public static void ex14() {
 		String[] sArr = new String[] { "국어", "수학", "영어", "과학", "사회" };
-		String subject = "";
+		String deleteSubject = "";
 		
-		System.out.println("배열 출력 : "+Arrays.toString(sArr));
-		
+		System.out.println("현재 등록된 과목 : "+Arrays.toString(sArr));
 		System.out.print("제거할 과목명을 입력해주세요 : ");
-		subject=sc.nextLine();
+		
+		deleteSubject=sc.nextLine();
+		for(int i=0;i<sArr.length;i++) {
+			
+		}
 	}
 	
 	public static void main(String[] args) {
