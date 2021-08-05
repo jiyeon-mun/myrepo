@@ -16,10 +16,10 @@ public class Circle {
 	}
 	public void getAreaOfCircle() {
 		// 원의 넓이: 반지름*반지름*3.14(PI)
-		System.out.println("원의 넓이: "+radius*radius*pi);
+		System.out.println("원의 넓이: "+this.radius*this.radius*this.pi);
 	}
 	public void getSizeOfCircle() {
 		// 원의 둘레: 2*3.14(PI)*반지름
-		System.out.println("원의 둘레: "+2*radius*pi);
+		System.out.println("원의 둘레: "+2*this.radius*this.pi);
 	}
 }

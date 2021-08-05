@@ -2,9 +2,9 @@ package com.kh.exam6;
 //0804 클래스 실습예제
 
 // public 접근제한자로 다른 패키지의 클래스에 접근가능.
-import com.kh.exam6.member.*;
-import com.kh.exam6.product.*;
-import com.kh.exam6.shape.*;
+import com.kh.exam6.member.Member;
+import com.kh.exam6.product.Product;
+import com.kh.exam6.shape.Circle;
 
 //class Member {
 //	private String memberId="sce9853";
@@ -17,11 +17,12 @@ import com.kh.exam6.shape.*;
 //	
 //	public Member() {} // 기본생성자
 //	
-//	public void changeName(String name) {
+//	public void changeName(String name) { // name=moon
 //		memberName=name;
+		// this.memberName=name; // 명확한 구분을 위해 this.를 앞에 붙이도록 하자!
 //	}
 //	public void printName() {
-//		System.out.println(memberId+"\n"+memberPwd+"\n"+memberName+"\n"
+//		System.out.println(memberId+"\n"+memberPwd+"\n"+this.emberName+"\n"
 //				+age+"\n"+gender+"\n"+phone+"\n"+email);
 //	}
 //	
@@ -36,7 +37,7 @@ import com.kh.exam6.shape.*;
 //	public Product() {}
 //	
 //	public void info() {
-//		System.out.println(pName+"\n"+price+"\n"+band);
+//		System.out.println(this.pName+"\n"+this.price+"\n"+this.band);
 //	}
 //}
 //
@@ -68,8 +69,8 @@ public class ClassFileZip {
 
 	public static void main(String[] args) {
 		
-		Member m = new Member();
-		m.changeName("moon");
+		Member m = new Member(); // 인스턴스 m
+		m.changeName("moon"); // 함수호출
 		m.printName();
 		
 		System.out.println();
