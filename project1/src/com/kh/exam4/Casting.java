@@ -8,7 +8,6 @@ public class Casting {
 		int x = 100;
 		int y = 200;
 		byte z = (byte) (x + y);
-
 		System.out.println(z);
 
 		float f1 = z;

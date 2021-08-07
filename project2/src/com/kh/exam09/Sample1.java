@@ -1,4 +1,4 @@
-package com.kh.exam9;
+package com.kh.exam09;
 
 public class Sample1 {
 	
@@ -10,7 +10,7 @@ public class Sample1 {
 		p.isOdd(10);	p.isOdd(11);
 		
 		System.out.println("----배수여부 확인----");
-		p.isMulti(10);	p.isMulti(15);
+		p.isMulti2(10);	p.isMulti2(15);
 		p.isMulti(10,3);	p.isMulti(15,3);
 		p.isMulti(10,5);	p.isMulti(15,3);
 		
@@ -33,12 +33,12 @@ public class Sample1 {
 		System.out.println("----짝수/홀수 구분----");
 		System.out.println("짝수 "+p.isEven(10));
 		System.out.println("짝수 "+p.isEven(11));
-		System.out.println("홀수 "+p.isOdd(10));
-		System.out.println("홀수 "+p.isOdd(11));
+		System.out.println("홀수 "+p.isOdd2(10));
+		System.out.println("홀수 "+p.isOdd2(11));
 		
 		System.out.println("----배수여부 확인----");
-		System.out.println("2의배수 "+p.isMulti(10));
-		System.out.println("2의배수 "+p.isMulti(15));
+		System.out.println("2의배수 "+p.isMulti2(10));
+		System.out.println("2의배수 "+p.isMulti2(15));
 		System.out.println("3의배수 "+p.isMulti(10,3));
 		System.out.println("3의배수 "+p.isMulti(15,3));
 		System.out.println("5의배수 "+p.isMulti(10,5));
@@ -60,8 +60,8 @@ public class Sample1 {
 	}
 	
 	public static void main(String[] args) {
-		//ex1();
-		ex2();
+		ex1();
+		//ex2();
 	}
 
 }

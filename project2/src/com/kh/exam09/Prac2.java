@@ -1,4 +1,4 @@
-package com.kh.exam9;
+package com.kh.exam09;
 
 public class Prac2 {
 
@@ -6,27 +6,34 @@ public class Prac2 {
 		int i=x;
 		if(i%2==0) {
 			return true;
-		} else {
-			return false;
-		}
+		} 
+		return false; // else 생략하고 return 사용가능.
 	}
-	public boolean isOdd(int x) {
-		int i=x;
-		if(i%2==1) {
-			return true;
-		} else {
-			return false;
-		}
+//	public boolean isOdd(int x) {
+//		int i=x;
+//		if(i%2==1) {
+//			return true;
+//		} else {
+//			return false;
+//		}
+//	}
+	// isOdd는 isEven 결과의 반대값. 정의한 메서드로 결과값 반환 가능하다.
+	public boolean isOdd2(int num) {
+		return !this.isEven(num);
 	}
 	
-	public boolean isMulti(int x) {
-		int i=x;
-		if(i%2==0) {
-			return true;
-		} else {
-			return false;
-		}
+//	public boolean isMulti(int x) {
+//		int i=x;
+//		if(i%2==0) {
+//			return true;
+//		} else {
+//			return false;
+//		}
+//	}
+	public boolean isMulti2(int num) {
+		return this.isEven(num);
 	}
+	
 	public boolean isMulti(int x,int y) {
 		if(x%y==0) {
 			return true;

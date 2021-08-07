@@ -5,17 +5,18 @@ public class Operator {
 	public static void main(String[] args) {
 		// 전위 연산
 		int x1 = 10;
-		int y1 = ++x1;
+		int y1 = ++x1; // +1연산 실행 후 다른 연산 실행 => x1값에 +1연산 실행 후 그 값을 y1에 저장
 
 		System.out.println("전위 연산 결과 : " + y1);
 
 		// 후위 연산
 		int x2 = 10;
-		int y2 = x2++;
+		int y2 = x2++; // 다른 연산 우선 실행 후 +1 연산 실행 => x2를 y2에 저장 후 x2에 대해서 +1연산 실행
 
 		System.out.println("후위 연산 결과 : " + y2);
 
 		System.out.println("x1 : " + x1 + " | x2 :" + x2);
+		System.out.println("y1 : " + y1 + " | y2 :" + y2);
 
 		// 0으로 나누기 계산을 하면 Infinity
 		double z6 = 10 / 0.0;

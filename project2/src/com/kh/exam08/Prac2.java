@@ -1,4 +1,4 @@
-package com.kh.exam8;
+package com.kh.exam08;
 
 public class Prac2 {
 	

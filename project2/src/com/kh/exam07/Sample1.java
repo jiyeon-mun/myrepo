@@ -1,4 +1,4 @@
-package com.kh.exam7;
+package com.kh.exam07;
 
 class Other{
 	public void method() {

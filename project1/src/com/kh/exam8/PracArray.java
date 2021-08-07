@@ -113,6 +113,7 @@ public class PracArray {
 		String player;
 		String computer = "";
 		int[] score = new int[3];	// 0: 승, 1: 패, 2: 무
+		String[] sArr = {"가위", "바위", "보"};
 		boolean exitFlag = false;
 		
 		while(true) { // 게임 무한반복
@@ -132,14 +133,8 @@ public class PracArray {
 				break;
 			}
 			
-			switch(rd.nextInt(3)) {
-				case 0:
-					computer = "가위";	break;
-				case 1:
-					computer = "바위";	break;
-				case 2:
-					computer = "보";		break;
-			}
+			computer = sArr[rd.nextInt(3)]; // 컴퓨터: 가위,바위,보 중 랜덤
+			System.out.println("컴퓨터 랜덤 출력: "+computer);
 			
 			if(player.equals("가위")) {
 				if(computer.equals("바위")) {
@@ -192,7 +187,7 @@ public class PracArray {
 		
 		for(;;) { // exit 입력 전까지 무한반복
 			
-			int i=rd.nextInt(game.length); // i는 0, 1, 2 중 랜덤 반복. 배열길이 이용.
+			int i=rd.nextInt(game.length); // i는 0, 1, 2 중 랜덤 반복. 배열길이 이용. i는 컴퓨터 랜덤출력.
 			
 			// 랜덤 출력 확인
 //			System.out.print(i+" ");
@@ -363,12 +358,12 @@ public class PracArray {
 		//ex5();
 		//ex6();
 		//ex7();
-		//ex8();
+		ex8();
 		//ex10();
 		//ex9();
 		
 		//ex11();
-		ex12();
+		//ex12();
 		
 		
 

@@ -1,4 +1,4 @@
-package com.kh.exam9;
+package com.kh.exam09;
 
 import java.util.Arrays;
 
@@ -21,14 +21,19 @@ public class Prac1 {
 		}
 	}
 	
-	public void isMulti(int x) {
-		int i=x;
-		if(i%2==0) {
-			System.out.println(i+" 2의배수: "+"true");
-		} else {
-			System.out.println(i+" 2의배수: "+"false");
-		}
+//	public void isMulti(int x) {
+//		int i=x;
+//		if(i%2==0) {
+//			System.out.println(i+" 2의배수: "+"true");
+//		} else {
+//			System.out.println(i+" 2의배수: "+"false");
+//		}
+//	}
+	// 2의배수=짝수 구하기. 위에서 정의한 메서드 이용.
+	public void isMulti2(int num) {
+		this.isEven(num);
 	}
+	
 	public void isMulti(int x,int y) {
 		if(x%y==0) {
 			System.out.println(x+" "+y+"의배수: "+"true");
