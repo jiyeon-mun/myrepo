@@ -10,6 +10,13 @@ public class LoopStatement {
 		System.out.println("최종 i의 값은 "+i);
 	}
 	
+	public static void sample2() {
+		// 초기값을 감소시키면서 반복
+		for(int i = 5; i >= 1; i--) {
+			System.out.println(i + " 입니다.");
+		}
+	}
+	
 	public static void sample3() {
 		int i=1;
 		for(;i<=5;i++) { // 초기식 생략. 조건식, 증감식도 각각 생략 가능.
@@ -106,6 +113,7 @@ public class LoopStatement {
 	
 	public static void main(String[] args) {
 		// sample1();
+		// sample2();
 		// sample3();
 		// sample4();
 		// sample6();
