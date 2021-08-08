@@ -1,5 +1,6 @@
 package com.kh.exam7;
 
+
 import java.util.Scanner;
 
 public class PracWHILE {
@@ -7,83 +8,146 @@ public class PracWHILE {
 	static Scanner sc = new Scanner(System.in);
 
 	public static void ex1() {
-		// ASCII코드 영문자 소문자.(97~122). while문 이용.
-		int wnum=97;
-		while(wnum<=121) {
-			System.out.print((char)wnum+", ");
-			wnum++;
+		/*
+		 * 영문자 소문자 a ~ z 까지 츨력하시오.
+		 * ASCII코드 번호 영문자 소문자:97~122
+		 * a, b, c, d, e, f, g ... x, y, z
+		 */
+		System.out.println("For 문으로 출력한 결과");
+		for(char c='a';c<='z';c++){
+			System.out.print(c);
+			if(c!='z'){
+				System.out.print(", ");
+			}
 		}
-		if(wnum=='z') {
-			System.out.print((char)wnum);
+
+		System.out.println("\nWhile 문으로 출력한 결과");
+		char c='a';
+		while(c<'z'){
+			System.out.print(c+", "); // a, b, ...y, 
+			c++;
+		} // c에 대한 후치증가로 c의 값은 z를 가진다.
+		if(c=='z'){
+			System.out.print(c);
 		}
-		System.out.print("\n");
 		
-		// for문 이용
-		int fnum;
-		for(fnum=97;fnum<=121;fnum++) {
-			System.out.print((char)fnum+", ");
-		}
-		if(fnum=='z') {
-			System.out.print((char)fnum);
-		}
-		
-		
+		System.out.println("\nDo~While 문으로 출력한 결과");
+		c='a';
+		do {
+			System.out.print(c);
+			if(c!='z'){
+				System.out.print(", ");
+			}
+			c++;
+		} while(c<='z');
 	}
 	
 	public static void ex2() {
-		// ASCII코드 영문자 대문자.(65~90). while문
-		int num=90;
+		/*
+		 * 영문자 대문자를 역순으로 츨력하시오.
+		 * ASCII코드 번호 영문자 대문자:65~90
+		 * Z, Y, X, ... D, C, B, A
+		 */
+		System.out.println("For 문으로 출력한 결과");
+		for(char c='Z';c>='A';c--){
+			System.out.print(c);
+			if(c!='A'){
+				System.out.print(", ");
+			}
+		}
 		
-		while(num>65) {
-			System.out.print((char)num+", ");
-			num--;
+		System.out.println("\nWhile 문으로 출력한 결과");
+		char c='Z';
+		while(c>='A') {
+			System.out.print(c);
+			if(c!='A'){
+				System.out.print(", ");
+			}
+			c--;
 		}
-		if(num=='A') {
-			System.out.print((char)num);
-		}
-		System.out.print("\n");
 		
-		// for문 이용
-		int fnum;
-		for(fnum=90;fnum>65;fnum--) {
-			System.out.print((char)fnum+", ");
-		} // fnum=65=A
-		if(fnum=='A') {
-			System.out.print((char)fnum);
-		}
+		System.out.println("\nDo~While 문으로 출력한 결과");
+		c='Z';
+		do {
+			System.out.print(c);
+			if(c!='A'){
+				System.out.print(", ");
+			}
+			c--;
+		} while(c>='A');
 	}
 	
 	public static void ex3() {
+		/*
+		 * 다음과 같은 형식의 출력이 나오도록 하시오.
+		 * 
+		 * 1	2	3	4	5
+		 * 6	7	8	9	10
+		 * 11	12	13	14	15
+		 * 16	17	18	19	20
+		 */
+		System.out.println("------중첩반복을 사용하여 출력------");
+
+		System.out.println("For 문으로 출력한 결과");
 		int num=1;
-		
-		System.out.print("for문 중첩반복 결과\n");
-		for(int i=1;i<=4;i++) {
-			for(int j=1;j<=5;j++) {
-				System.out.print(num+"\t");
-				num++;
+		for(int i=0;i<4;i++){ // 4행
+			for(int j=0;j<5;j++){ // 5열
+				System.out.print((num++)+"\t"); // 후치증가: 출력 후 +1연산 수행
 			}
-			System.out.print("\n");
+			System.out.println();
+		}
+		System.out.println("\nWhile 문으로 출력한 결과");
+		num=1;
+		int i=0;
+		while(i<4){ // 4행
+			int j=0; // 행별로 5열 리셋
+			while(j<5){ // 5열
+				System.out.print((num++)+"\t");
+				j++;
+			}
+			System.out.println();
+			i++;
 		}
 		
-		System.out.print("\n");
+		System.out.println("\n------중첩반복을 사용하지 않고 출력------");
 		
-		System.out.print("while문 중첩반복 결과\n");
-		num=1;
-		int i=1;
-		while(i<=4) {
-			int j=1;
-			while(j<=5) {
-				System.out.print(num+"\t");
-				j++;
-				num++;
+		System.out.println("For 문으로 출력한 결과");
+		// 1부터 1씩 증가하여 20까지의 숫자 범위에 대해서
+		for(int x=1;x<=20;x++){
+			System.out.print(x+"\t");
+			// 증가하는 x값이 5의 배수일 때 개행
+			// 하나의 행에 5열씪 나열 후 개행
+			if(x%5==0){
+				System.out.println(); // System.out.print("\n");
 			}
-			System.out.print("\n");
-			i++;
+		}
+		System.out.println("\nWhile 문으로 출력한 결과");
+		int x=1;
+		while(x<=20) {
+			System.out.print(x+"\t");
+			if(x%5==0){
+				System.out.println();
+			}
+			x++;
 		}
 		
 	}
 	
 	public static void ex4() {
+		/*
+		 * 사용자가 입력한 정수값 범위에 해당하는 값만 출력하시오.
+		 * 
+		 * 예)
+		 * 		최소값 : 11
+		 * 		최대값 : 99
+		 * 		열 수 : 10
+		 * 
+		 * 		11	12	13	14	15	16	17	18	19	20
+		 * 		21	22	23	24	25	26	27	28	29	30
+		 * 		...
+		 * 		...
+		 * 		91	92	93	94	95	96	97	98	99	
+		 */
 		int num1,num2,num3;
 		int count=0; // num1 ~ num2 사이의 값 출력 시 카운팅 횟수
 		
@@ -210,9 +274,9 @@ public class PracWHILE {
 	public static void main(String[] args) {
 		//ex1();
 		//ex2();
-		//ex3();
+		ex3();
 		//ex4();
-		ex5();
+		//ex5();
 		//ex6();
 
 	}
