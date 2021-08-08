@@ -111,6 +111,7 @@ public class ArrayData1 {
 		// 깊은 복사
 		for (int i = 0; i < arr.length; i++) {
 			arrCopy[i]=arr[i].clone();
+			// System.arraycopy(arr[i], 0, arrCopy, 0, arr[i].length); 사용불가
 		}
 		
 		// 얕은복사
