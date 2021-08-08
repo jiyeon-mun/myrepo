@@ -149,7 +149,6 @@ public class PracWHILE {
 		 * 		91	92	93	94	95	96	97	98	99	
 		 */
 		int num1,num2,num3;
-		int count=0; // num1 ~ num2 사이의 값 출력 시 카운팅 횟수
 		
 		System.out.print("최소값 : ");
 		num1=sc.nextInt(); sc.nextLine();
@@ -158,126 +157,170 @@ public class PracWHILE {
 		System.out.print("열 수 : ");
 		num3=sc.nextInt(); sc.nextLine();
 		
+		System.out.println("------출력되는 숫자들을 개수를 카운팅하여 개행시킴------");
+		
 		System.out.print("for문 결과\n");
+		int count=0; // num1 ~ num2 사이의 값 출력마다 카운팅한 횟수
 		for(int j=num1;j<=num2;j++) {
 			System.out.print(j+"\t");
+			// 숫자 출력마다 개수 카운팅
 			count+=1;
 			if(count%num3==0) {
 				System.out.print("\n");
 			}
 		}
-		System.out.print("\n");
-		System.out.print("\n");
-		
-		System.out.print("while문 결과\n");
+		System.out.println("\nWhile 문으로 출력한 결과");
 		int i=num1;
-		
-		count=0; // for문과 공유하기 때문에 초기에 설정한 것처럼 0으로 초기화 해서 while문에서 사용
-		
+		count=0;
 		while(i<=num2) {
 			System.out.print(i+"\t");
-			count+=1; // 숫자 출력마다 개수 카운팅
+			count+=1;
 			i++;
-			if(count==num3) { // 카운팅 수와 열 수가 동일 할 때
-				System.out.print("\n"); // 개행
-				count=0; // 다시 카운팅 횟수를 0으로 초기화하여 다음 줄에서 다시 1부터 카운트하여 열수와 동일할 때 개행시킴.
+			// 카운팅수와 열수가 동일 할 때 개행을 시킨다.
+			// 숫자를 입력한 열수만큼 출력 후 개행
+			if(count==num3) { 
+				System.out.print("\n");
+				// 다시 카운팅 횟수를 0으로 초기화하여 다음 줄(행)에서 다시 1부터 카운트하여 열수와 동일할 때 개행시킴.
+				count=0;
 			}
+		}
+		
+		System.out.println("\n\n------출력되는 숫자들을 열수만큼 나열 후 개행------");
+		// 증가되면서 출력하는 정수들을 나열하면서 증가하는 정수값이 열수값과 동일할 때 개행을 시킨다.
+		
+		System.out.println("For 문으로 출력한 결과");
+		for(int j=num1;j<=num2;j++){
+			System.out.print(j+"\t");
+			if(j%num3==0){
+				System.out.println();
+			}
+		}
+		System.out.println("\nWhile 문으로 출력한 결과");
+		int j=num1;
+		while(j<=num2){
+			System.out.print(j+"\t");
+			if(j%num3==0){
+				System.out.println();
+			}
+			j++;
 		}
 		
 	}
 	
 	public static void ex5() {
-		int num; // 입력받는 배수 값
-		int count; // 100 ~ 999 범위 내 '입력받은 배수 값' 배수 존재 개수
-		int lnum; // 100 미만 중 '입력받은 배수 값'의 최대 배수 값
-		
-		System.out.print("배수 값 : ");
-		num=sc.nextInt(); sc.nextLine();
-		
-		count=999/num-100/num;
-		lnum=100/num*num;
-		
-		System.out.print("for문 결과\n");
-		for(int i=1;i<=count;i++) {
-			System.out.print(lnum+num*i+" ");
-			if(i%5==0) { 
-				System.out.print("\n");
-			}
-		}
-		System.out.print("\n");
-		System.out.print("\n");
-		
-		System.out.print("while문 결과\n");
-		int j=1;
-		while(j<=count) { // 출력되는 값에 대한 위치 지정
-			System.out.print(lnum+num*j+" ");
-			if(j%5==0) {
-				
-				System.out.print("\n");
-			}
-			j++;
-		}
+		/*
+		 * 100 ~ 999 범위에 해당하는 배수 값을 출력한다.
+		 * 출력할 배수 값은 사용자 입력을 통해 알아낸다.
+		 * 
+		 * 예)
+		 * 		배수 값 : 13
+		 * 		104		117		130		143		156	
+		 * 		169		...		
+		 * 		...
+		 * 		...		...		...		988		
+		 */
+		int num;
 
+		System.out.print("배수 값: ");
+		num=sc.nextInt(); sc.nextLine();
+
+		System.out.print(" for문 결과\n");
+		int cnt=0; // 개행을 위한 열수 카운팅 횟수
+		for(int i=100;i<1000;i++){
+			// 범위 내 배수값 출력마다 열수 카운팅+1
+			if(i%num==0){
+				System.out.print(i+"\t");
+				cnt+=1;
+				// 5열마다 개행
+				if(cnt%5==0){
+					System.out.println();
+				}
+			}
+		}
+		System.out.println("\n\n While 문으로 출력한 결과");
+		cnt=0;
+		int i=100;
+		while(i<1000){
+			if(i%num==0){
+				System.out.print(i+"\t");
+				cnt+=1;
+				if(cnt%5==0){
+					System.out.println();
+				}
+			}
+			i++;
+		}
 	}
 	
 	public static void ex6() {
-		String str;
-		int len;
-		int count=0;
+		/*
+		 * 사용자로 부터 임의의 문자열을 입력 받은 후
+		 * a, e, i, o, u 문자가 얼마나 포함되어 있는지 확인하는 코드를 작성한다.
+		 * 
+		 * Tip 1.) 사용자가 입력한 문자열의 문자를 탐색하기 위해 .charAt(index) 메서드를
+		 * 활용한다.
+		 * 		String text = "hello";
+		 * 		text.charAt(0); // 'h'
+		 * 		text.charAt(1); // 'e'
+		 * 		text.charAt(2); // 'l'
+		 * 
+		 * Tip 2.) 문자열의 길이를 알기 위해 .length() 메서드를 사용한다.
+		 * 		String text = "hello";
+		 * 		text.length(); // 5
+		 */
+		String text;
+		int cnt=0; // 문자열 내 a,e,i,o,u 존재 개수 카운팅 횟수
 		
-		System.out.print("String text = ");
-		str=sc.nextLine();
-		len=str.length();
-		
-		System.out.print("while문 결과\n");
-		int j=0;
-		while(j<len) {
-			switch(str.charAt(j)) { // a,e,i,o,u와 비교 하여 있으면 count 1씩 증가
+		System.out.print("문자열 입력 : ");
+		text = sc.nextLine();
+		int len=text.length();
+
+		System.out.print(" for문 결과\n");
+		for(int i=0;i<len;i++){
+			// 문자열에서 한글자씩 가져와 a,e,i,o,u가 있는지 비교
+			switch(text.charAt(i)){
+			// 여러 케이스에 대한 실행할 문장들
+			// case 상수값이 a,e,i,o,u에 대해서 아래 실행문들을 모두 수행한다.
 			case 'a':
-				count+=1; System.out.println(count+" a"); break; // 하나의 위치에 대한 문자 비교 후 break. 다음 위치의 문자로
 			case 'e':
-				count+=1; System.out.println(count+" e"); break;
 			case 'i':
-				count+=1; System.out.println(count+" i"); break;
 			case 'o':
-				count+=1; System.out.println(count+" o"); break;
 			case 'u':
-				count+=1; System.out.println(count+" u"); break;
-			}
-			j++;
-		}
-		System.out.println("문자열 내 \'a, e, i, o, u\' 개수는 "+count+" 입니다.");
-		
-		System.out.print("\n");
-		
-		System.out.print("for문 결과\n");
-		count=0; // while문 for문 결과 동시 비교로 인해 초기화 한다.
-		
-		for(int i=0;i<len;i++) { // 문자 위치 한 개씩 
-			switch(str.charAt(i)) { // a,e,i,o,u와 비교 하여 있으면 count 1씩 증가
-			case 'a':
-				count+=1; System.out.println(count+" a"); break; // 하나의 위치에 대한 문자 비교 후 break. 다음 위치의 문자로
-			case 'e':
-				count+=1; System.out.println(count+" e"); break;
-			case 'i':
-				count+=1; System.out.println(count+" i"); break;
-			case 'o':
-				count+=1; System.out.println(count+" o"); break;
-			case 'u':
-				count+=1; System.out.println(count+" u"); break;
+				cnt += 1;
+				System.out.print(text.charAt(i) + " "); // 문자열 내 어떤 a,e,i,o,u가 있는지 확인 출력
+				break;
+				// 문자열의 i번째 위치에 a,e,i,o,u 중 하나가 발견되면 위의 실행문을 수행하고
+				// switch문을 탈출하여 다시 for문으로 돌아간다.
 			}
 		}
-		System.out.println("문자열 내 \'a, e, i, o, u\' 개수는 "+count+" 입니다.");
-		
+		System.out.println("\n입력한 문자열 내 a, e, i, o, u 문자의 존재 개수: "+cnt);
+
+		System.out.println("\n\n While 문으로 출력한 결과");
+		cnt=0;
+		int i=0;
+		while(i<len){
+			switch(text.charAt(i)){
+			case 'a':
+			case 'e':
+			case 'i':
+			case 'o':
+			case 'u':
+				cnt += 1;
+				System.out.print(text.charAt(i) + " ");
+				break;
+			}
+			i++;
+		}
+		System.out.println("\n입력한 문자열 내 a, e, i, o, u 문자의 존재 개수: "+cnt);
 	}
 	
 	public static void main(String[] args) {
 		//ex1();
 		//ex2();
-		ex3();
+		//ex3();
 		//ex4();
 		//ex5();
-		//ex6();
+		ex6();
 
 	}
 
