@@ -47,6 +47,18 @@ public class LoopStatement1 {
 		} while(num < 10);
 		System.out.println("반복 끝");
 	}
+	public static void sample5_1() {
+		int i=1;
+		do {
+			System.out.println(i+" 출력");
+			i++;
+		}while(i<=10);
+	}
+	public static void sample5_2() {
+		for(int i=1;i<=10;i++) {
+			System.out.println(i+" 출력");
+		}
+	}
 	
 	public static void sample6() {
 		// break : 반복 종료
@@ -68,7 +80,9 @@ public class LoopStatement1 {
 		// sample3();
 		// sample4();
 		// sample5();
-		sample6();
+		//sample6();
+		//sample5_1();
+		sample5_2();
 
 	}
 
