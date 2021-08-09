@@ -5,6 +5,7 @@ import java.util.Scanner;
 
 class CRPGame {
 	private Random rd = new Random();
+	
 	public String player;
 	public String computer;
 	public int[] score = new int[3];
