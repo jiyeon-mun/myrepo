@@ -1,44 +1,85 @@
 package com.kh.exam10;
 
 class Square {
-	int width;
-	int height;
+	public int width;
+	public int height;
 	
-	// 같은 클래스 내 매개변수가 있는 생성자가 존재하면
-	// JVM이 기본생성자를 자동으로 생성해주지 않는다.
-	public Square() {} 
-	
-	public int area() {
-		return width*height;
+	public Square() {
+		this.width = 1;
+		this.height = 1;
 	}
 	
-	// 매개변수가 있는 생성자
 	public Square(int width, int height) {
 		this.width = width;
 		this.height = height;
 	}
 	
+	public int area() {
+		return this.width * this.height;
+	}
+}
+
+// 삼각형, 원에 대한 클래스 생성.
+class Triangle {
+	private int width;
+	private int height;
+	
+	public Triangle() {};
+	
+	public Triangle(int number) {
+		this.width = number;
+		this.height = number;
+	}
+	
+	public Triangle(int width, int height) {
+		this.width = width;
+		this.height = height;
+	}
+	
+	public int area() {
+		return this.width * this.height / 2;
+	}
+	
+	public void setWidth(int width) {
+		this.width = width;
+	}
+	
+	public int getWidth() {
+		return this.width;
+	}
+	
+	public void setHeight(int height) {
+		this.height = height;
+	}
+	
+	public int getHeight() {
+		return this.height;
+	}
 }
 
 public class Sample1 {
 
 	public static void main(String[] args) {
+		/*
+		 * 클래스를 사용하여 인스턴스를 만들고 만들어진 인스턴스를 사용하는 코드를
+		 * 보고 해당 코드에 적합한 클래스를 작성해보도록 한다.
+		 */
 		Square s = new Square();
-		s.width=100;
-		s.height=50;
+		s.width = 100;
+		s.height = 50;
 		
-		int area=s.area();
+		// 위에서 변경한 width, height 속성으로 넓이 계산을 하여 리턴.
+		int area = s.area();
 		
-		System.out.println("사각형 너비: " + s.width);
-		System.out.println("사각형 높이: " + s.height);
-		System.out.println("사각형 넓이: " + s.area());
+		System.out.println("사각형의 너비는 " + s.width + " 입니다.");
+		System.out.println("사각형의 높이는 " + s.height + " 입니다.");
+		System.out.println("사각형의 넓이는 " + area + " 입니다.");
 		
-		Square s1 = new Square(10, 20); // 매개변수가 있는 생성자
+		Square s1 = new Square(10, 20);
 		
-		System.out.println("사각형 너비: " + s1.width);
-		System.out.println("사각형 높이: " + s1.height);
-		System.out.println("사각형 넓이: " + s1.area());
-
+		System.out.println("사각형의 너비는 " + s1.width + " 입니다.");
+		System.out.println("사각형의 높이는 " + s1.height + " 입니다.");
+		System.out.println("사각형의 넓이는 " + s1.area() + " 입니다.");
 	}
 
 }
