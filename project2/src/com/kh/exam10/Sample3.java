@@ -50,8 +50,11 @@ class Subject {
 		// return this.jumsu >= 0 && this.jumsu <= 100 ? true : false;
 	}
 	
-	public String getGrade() {		
-		// 점수범위에 따라 등급 지정
+	/*
+	 * 입력된 점수에 따라 등급을 구하기 위한 메서드
+	 */
+	public String getGrade() {
+		// 기존범위의 등급지정을 입력범위 제한에 따른 등급 지정으로 변환
 		double p = this.max / 100.0;
 		if (this.jumsu <= this.max && this.jumsu >= ((double) this.max / 100 * 90)) {
 			return "A";

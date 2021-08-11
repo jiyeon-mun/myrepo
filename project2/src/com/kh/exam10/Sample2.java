@@ -16,26 +16,41 @@ class Student{
 		this.name=name;
 	}
 	
-	// this.을 이용해 상위개념에 접근한다. 호출을 통해 받아온 매개변수를 멤버변수에 저장하여 결과로서 보여준다.
-	public void setName(String name) {this.name=name;}
-	public void setAge(int age) {this.age=age;}
-	public void setGender(char gender) {this.gender=gender;}
-	public void setRank(int rank) {this.rank=rank;}
-	
+	// setter메서드 내 this.멤버변수를 이용해 캡슐화한 멤버변수에 접근
+	// main()에서 메서드 호출로 받아온 매개변수를 멤버변수에 저장
+	// getter메서드로 저장한 필드값을 반환
 	public String getName() {
-		return name;
+		return this.name;
 	}
-	public int getNum() {
-		return age;
+	public void setName(String name) {
+		this.name = name;
 	}
+
+	public int getAge() {
+		return this.age;
+	}
+	public void setAge(int age) {
+		this.age = age;
+	}
+
 	public char getGender() {
-		return gender;
+		return this.gender;
 	}
+	public void setGender(char gender) {
+		this.gender = gender;
+	}
+
 	public int getRank() {
-		return rank;
+		return this.rank;
+	}
+	public void setRank(int rank) {
+		this.rank = rank;
 	}
 	
-	// 결과출력
+	/*
+	 * 사용자 정보들 누적저장 메서드
+	 * 누적저장한 문자열을 반환하여 main()에서 println()내 출력
+	 */
 	public String info() {
 		// +연산자는 문자열을 연결한다.
 		String text = "";
@@ -44,7 +59,7 @@ class Student{
 		text += "성적 순위: " + this.rank + "\n";
 		return text;
 	}
-	
+
 	public void RankUp(int up) {
 		this.rank-=up;
 	}
@@ -52,19 +67,27 @@ class Student{
 		this.rank+=down;
 	}
 	
+	/*
+	 * 각 인스턴스의 등수 정보 비교하여 누가 더 높은지 확인하는 메서드
+	 * if문 조건으로 boolean의 true, false 판별하여 반환
+	 */
 	// 클래스를 매개변수로 가지는 멤버함수. student는 s2클래스 매개변수를 의미한다.
+	// this.rank는 박지은의 등수, student.rank는 홍길동의 등수.
 	public boolean isHigh(Student student) {
-		// this.rank는 박지은의 등수, student.rank는 홍길동의 등수.
-		if(this.rank>student.rank) {
-			return true;
-		}
-		return false;
+		return this.rank > student.rank ? true : false; // 삼항연산자 이용 (조건?참:거짓)
+//		if(this.rank>student.rank) {
+//			return true;
+//		} else {
+//			return false;
+//		}
 	}
 	public boolean isLow(Student student) {
-		if(this.rank<student.rank) {
-			return true;
-		}
-		return false;
+		return this.rank < student.rank ? true : false;
+//		if(this.rank<student.rank) {
+//			return true;
+//		} else {
+//			return false;
+//		}
 	}
 
 }
@@ -127,6 +150,9 @@ public class Sample2 {
 
 		// s2는 박지은의 등수, s1은 홍길동의등수
 		// 매개변수로 클래스를 가지는 멤버함수 호출
+		System.out.println(s2.getName() + "님의 등수: " + s2.getRank() + 
+				" | " + s1.getName() + "님의 등수: " + s1.getRank()); // 각 인스턴스의 정보 확인차 출력
+		
 		if(s2.isHigh(s1)) {
 			System.out.println(s2.getName() + "님의 등수가 " + s1.getName() + " 님의"
 					+ " 등수보다 높습니다.");
