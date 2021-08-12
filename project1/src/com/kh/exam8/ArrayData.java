@@ -268,8 +268,8 @@ public class ArrayData {
 		//sample6();
 		//sample7();
 		//sample8();
-		//sample9();
-		sample10();
+		sample9();
+		//sample10();
 	}
 
 }
