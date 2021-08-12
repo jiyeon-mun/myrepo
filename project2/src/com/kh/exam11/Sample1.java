@@ -1,5 +1,6 @@
 package com.kh.exam11;
 
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class Sample1 {
@@ -123,9 +124,34 @@ public class Sample1 {
 		sub = new Subject("수학",97);
 		std.addSubject(sub);
 		
-		System.out.println(std.getName()+" 학생의 총점은 "+std.total());
-		System.out.println(std.getName()+" 학생의 평균은 "+std.avg());
-
+		System.out.println("----추가한 과목 정보 출력----");
+		for(int i = 0; std.getSubjectName(i) != null; i++) {
+			System.out.println(std.getSubjectName(i) + " 과목의 점수는 "
+					+ std.getSubjectJumsu(std.getSubjectName(i)) + " 점 입니다.");
+		}
 		
+		
+		System.out.println("----과목 정보 업데이트----");
+		System.out.println(std.updateSubject("영어", "사회"));
+		System.out.println(std.updateSubject("과학", "체육", 85));
+		System.out.println(std.updateSubject("국어", 93));
+		
+		for(int i = 0; std.getSubjectName(i) != null; i++) {
+			System.out.println(std.getSubjectName(i) + " 과목의 점수는 "
+					+ std.getSubjectJumsu(std.getSubjectName(i)) + " 점 입니다.");
+		}
+		
+		
+		System.out.println("----과목 삭제 후 학생 과목 정보 총 출력----");
+		std.deleteSubject("사회");
+		std.deleteSubject(2);
+		
+		System.out.println(std.getName() + " 학생의 총점은 " + std.total() + " 점 입니다.");
+		System.out.println("평균은 " + std.avg() + " 점 입니다.");
+		for(int i = 0; std.getSubjectName(i) != null; i++) {
+			System.out.println(std.getSubjectName(i) + " 과목의 점수는 "
+					+ std.getSubjectJumsu(std.getSubjectName(i)) + " 점 입니다.");
+		}
+	
 	}
 }
