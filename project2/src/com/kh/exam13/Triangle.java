@@ -10,5 +10,6 @@ public class Triangle extends Shape {
 	@Override
 	public int getArea() {
 		return this.getHeight()*this.getWidth()/2;
+		// return super.getArea()/2; 부모클래스 내 해당 메서드가 추상메서드가 아닐 때
 	}
 }
