@@ -9,6 +9,7 @@ public class Point {
 		this.x = x;
 		this.y = y;
 	}
+	
 	public int getX() {
 		return x;
 	}
@@ -21,6 +22,7 @@ public class Point {
 	public void setY(int y) {
 		this.y = y;
 	}
+	
 	@Override
 	public String toString() {
 		return "Point [x=" + this.x + ", y=" + this.y + "]";

@@ -24,16 +24,9 @@ public class Rectangle extends Point {
 		this.height = height;
 	}
 	
-//	@Override
-//	public String toString() {
-//		return this.getX() + ", " + this.getY() + ", " + this.getHeight()
-//				+ ", " + this.getWidth();
-//	}
 	@Override
 	public String toString() {
 		return "Rectangle [width=" + this.width + ", height=" + this.height 
 				+ ", getX()=" + this.getX() + ", getY()=" + this.getY() + "]";
 	}
-	
-	
 }
