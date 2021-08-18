@@ -10,4 +10,5 @@ public class NativePerson extends Person {
 	public void setpNumber(String pNumber) {
 		this.pNumber = pNumber;
 	}
+	
 }

@@ -24,4 +24,5 @@ public class Foreigner extends Person {
 	public void extduration(int day) {
 		this.durationDay+=day;
 	}
+	
 }
