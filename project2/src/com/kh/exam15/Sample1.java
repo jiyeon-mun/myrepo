@@ -19,24 +19,33 @@ public class Sample1 {
 			// 각 클래스에 toString() 을 오버라이딩 하여 객체배열 내 저장된 정보를 출력할 수 있도록 한다.
 		}
 		
-		System.out.println("==========================================================================");
+		System.out.println();
 		
-		Novel[] novels=null;		int nCnt=0; // books배열 내 소설 개수
-		Comics[] comices=null;		int cCnt=0; // books배열 내 코믹 개수
-		Magazine[] magazines=null;	int mCnt=0; // books배열 내 잡지 개수
+		/*
+		 * 위의 Book 배열 객체에서 소설책, 코믹스, 잡지를 분류하고 분류된 객체를 각 배열
+		 * (Novel 배열, Comics 배열, Magazine 배열)로 이동 시킨다.
+		 * 동적 배열이 어려우면 정적 배열로 만들어서 진행해도 됨.
+		 */
+		Novel[] novels=null;		int nCnt=0;
+		Comics[] comices=null;		int cCnt=0;
+		Magazine[] magazines=null;	int mCnt=0;
+		// 부모클래스타입 배열 내 각각의 자식클래스 개수 카운팅 
 		for(Book b:books) {
 			if(b instanceof Novel) {
-				nCnt++;
+				nCnt++; // 2개
 			} else if(b instanceof Comics) {
-				cCnt++;
+				cCnt++; // 2개
 			} else if(b instanceof Magazine) {
-				mCnt++;
+				mCnt++; // 1개
 			}
 		}
 		
+		// 분류된 객체들 개수만큼 각각의 자식클래스타입 객체배열 크기 지정 
 		novels = new Novel[nCnt];
 		comices = new Comics[cCnt];
 		magazines = new Magazine[mCnt];
+		// 부모클래스 객체배열 내 저장된 자식클래스 내용을 분류하여
+		// 자식클래스별 객체배열에 따로 저장
 		nCnt = cCnt = mCnt = 0;
 		for(Book b:books) {
 			if(b instanceof Novel) {
@@ -47,6 +56,7 @@ public class Sample1 {
 				magazines[mCnt++] = (Magazine)b;
 			}
 		}
+		// 분류된 자식클래스 객체배열 확인
 		System.out.println(Arrays.toString(novels));
 		System.out.println(Arrays.toString(comices));
 		System.out.println(Arrays.toString(magazines));
