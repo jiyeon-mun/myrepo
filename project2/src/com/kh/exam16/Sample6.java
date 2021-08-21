@@ -43,7 +43,10 @@ public class Sample6 {
 	}
 	
 	public static void ex2() {
-		// Calendar date = new Calendar(); new 이용한 객체생성 불가
+		// Calendar클래스는 생성자가 protected이다.
+		// => new연산자를 이용한 객체 생성 불가
+		// => getInstance() 메서드 이용해서 객체 생성
+		//	  클래스 내 모든 필드는 클래스 변수로, 객체 생성하지 않고 바로 사용 가능
 		Calendar date = Calendar.getInstance();
 
 		int year = date.get(Calendar.YEAR);
