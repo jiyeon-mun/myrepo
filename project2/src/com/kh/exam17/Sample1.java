@@ -1,5 +1,10 @@
 package com.kh.exam17;
 
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.*;
 // import java.util.ArrayList; import java.util.List; import java.util.Random;
 // import java.util.Date;
@@ -72,6 +77,7 @@ public class Sample1 {
 		 */
 		System.out.println("공백을 구분자로 사용하여 다음 내용에 맞은 데이터를 입력하세요.");
 		System.out.print("정수값을 2개 이상 입력하세요. : ");
+		// 입력된 정수값들 띄어쓰기로 구분하여 문자열 배열에 각각의 요소로 저장
 		String[] inputs=sc.nextLine().split(" ");
 		// System.out.println(Arrays.toString(inputs));		
 		
@@ -134,22 +140,28 @@ public class Sample1 {
 		 * 	- 사용자 입력으로 하나의 정수 데이터를 입력 할 수 있지만 2개 이상의 정수를 입력 하기도 한다.
 		 * 	- 동일한 정수 데이터는 ArrayList에 저장되지 않도록 한다.
 		 */
+	}
+	// 4번) 풀이1
+	public static void ex4_1() {
 		System.out.println("공백을 구분자로 사용하여 다음 내용에 맞은 데이터를 입력하세요.");
 		System.out.print("정수값을 한 개 이상 입력하세요. : ");
-		
 		// 정수입력값을 저장한 문자열배열을 정수형배열로 바꿈
 		String[] inputs=sc.nextLine().split(" ");
+		
 		int cnt=inputs.length;
-		int[] intInputs= new int[cnt];
+		int[] intInputs= new int[cnt]; // 문자열정수값을 정수형으로 변환하여 저장할 졍수형 배열
 		int idx1=0;
 		for(String s:inputs) {
 			if(idx1<intInputs.length) {
-				intInputs[idx1++]=Integer.parseInt(s);
+				intInputs[idx1++]=Integer.parseInt(s); // parseInt()의 반환되는 결과값은 int 기본자료형
+				// 문자열 반환 시 기본자료형(primitive type)으로 받고 싶을 때는 parseInt(),
+				//				new Integer() 객체로 반환하고 싶으면 valueOf() 사용
 			}
 		}
 		System.out.println(Arrays.toString(intInputs)); // 입력값들 정수배열로 저장됐는지 확인
 		
 		// 입력된 정수들을 저장한 정수배열 중 중복값은 제거한 새로운 정수배열 생성
+		// 동적 배열 이용
 		boolean isDuplicate=false;
 		int[] noDuplicate = new int[0];
 		for(int i=0;i<intInputs.length;i++) {
@@ -169,6 +181,7 @@ public class Sample1 {
 		}
 		System.out.println(Arrays.toString(noDuplicate)); // 입력값 중 중복이 제거된 요소만 저장한 정수배열 확인 출력
 		
+		// 입력정수값 중 중복이 제거된 정수배열 요소를 ArrayList에 하나씩 삽입
 		List<Integer> intArr = new ArrayList<Integer>();
 		int idx2=0;
 		for(int i:noDuplicate) {
@@ -177,6 +190,43 @@ public class Sample1 {
 			}
 		}
 		System.out.println(intArr);
+	}
+	// 4번) 풀이2
+	public static void ex4_2() {
+		List<Integer> intList = new ArrayList<Integer>();
+		
+		while(true) {			
+			System.out.println("공백을 구분자로 사용하여 다음 내용에 맞은 데이터를 입력하세요.");
+			System.out.print("정수값을 한 개 이상 입력하세요. : ");
+			String[] inputs=sc.nextLine().split(" ");
+			
+			try {
+				for(String s:inputs) {
+					intList.add(Integer.valueOf(s));
+				}
+				System.out.print(intList+" | "); // 중복을 제거하지 않은 상태
+				System.out.println(intList.size());
+			} catch(Exception e) {
+				System.out.println("정수만 입력해주세요.(띄어쓰기 구분)");
+				intList.clear(); continue; // 저장된 ArrayList 지우고 정수입력으로 돌아가기
+			}
+			
+			// ArrayList 내 중복 검사 및 제거
+			for(int i=0;i<intList.size();i++) { // i번 객체를
+				for(int j=0;j<i;j++) { // (i-1)번 까지의 객체들과 비교
+					if(intList.get(i)==intList.get(j)) {
+						// 중복의 경우 중복되는 i번 객체를 제거하고 해당 자리수도 하나 지운다.
+						System.out.println("중복 객체 요소: "+intList.get(i)+" | 중복 객체의 인덱스: "+i);
+						intList.remove(i); System.out.println("인덱스 "+i+"번의 중복 객체가 제거된 ArrayList: "+intList);
+						i--; // 중복값이 있던 인덱스에 새로운 값을 넣을 수 있게 자리수를 하나 지움.
+						
+					}
+				}
+			}
+			break;
+		}
+		System.out.println(intList);
+		
 	}
 	
 	public static void ex5() {
@@ -187,6 +237,8 @@ public class Sample1 {
 		 * 	- 생성된 랜덤값은 ArrayList 에 저장한다.
 		 * 	- ArrayList에 저장한 정수는 중복이 없어야 한다.
 		 */
+		List<Integer> intArr = new ArrayList<Integer>();
+		
 		System.out.println("공백을 구분자로 사용하여 다음 내용에 맞은 데이터를 입력하세요.");
 		System.out.print("최대값, 최소값, 갯수를 순서대로 입력하세요. : ");
 		
@@ -195,26 +247,22 @@ public class Sample1 {
 		int min = Integer.parseInt(inputs[1]); // 최소값
 		int cnt = Integer.parseInt(inputs[2]); // 범위 사이의 랜덤 생성값 개수
 		
-		//System.out.println(max+"|"+min+"|"+cnt); // 각각의 최대값, 최소값, 갯수가 정수형으로 저장됐는지 확인
-		
-		List<Integer> intArr = new ArrayList<Integer>();
 		// 지정한 범위 내 입력한 갯수만큼 중복이 없는 랜덤 생성값을 정수형 리스트에 저장한다.
+		// 생성된 랜덤값이 리스트 내 존재하지 않는 경우에만 리스트 마지막 위치에 추가한다.
+		// 중복된 랜덤생성값의 경우 현재 인덱스에 대해 난수를 재생성 하도록 한다.
 		for (int i = 0; i < cnt; i++) {
 			// 최소값~최대값 범위 내 랜덤 난수 출력
-			int rdNum = min + rd.nextInt((max - min) + 1);
-			// 생성된 랜덤값이 리스트 내 존재하지 않는 경우에만 리스트 마지막 위치에 추가
+			int rdNum = min + rd.nextInt((max - min) + 1); // (int)((Math.random()*(max-min+1))+min)
+			
 			if (!intArr.contains(rdNum)) {
 				intArr.add(rdNum);
 			}
-			// 중복된 랜덤생성값의 경우 현재 인덱스에 대해 난수를 재생성 하도록 한다.
 			else {
-				--i; // 현재인덱스 유지 및 반복문으로 다시 돌아감
+				i--; // 현재인덱스 유지 및 반복문으로 다시 돌아감
 			}
 
 		}
 		System.out.println(intArr);
-		
-		
 	}
 	
 	public static void ex6() {
@@ -222,27 +270,23 @@ public class Sample1 {
 		 * 현재 날짜를 구한 후 ArrayList에 년, 월, 일, 시간, 분, 초 데이터가
 		 * 저장되도록 한다.
 		 */
-		System.out.println("현재 날짜 출력: "+date1); // Sat Aug 21 12:36:35 KST 2021
+		System.out.println("현재 날짜 출력: "+date1); // Sat Aug 21 12:36:35 KST 2021 형식
 		
 		List<String> strList = new ArrayList<String>();
-		
+		// Date 클래스 format() 메서드 사용
 		String sdate1 = "%tY년";
-		strList.add(String.format(sdate1, date1));
-		
+		strList.add(String.format(sdate1, date1)); // date1을 sdate1 형식으로 포맷함.
 		sdate1 = "%tm월";
 		strList.add(String.format(sdate1, date1));
-		
 		sdate1 = "%td일";
 		strList.add(String.format(sdate1, date1));
-		
 		sdate1 = "%tH시";
 		strList.add(String.format(sdate1, date1));
-		
 		sdate1 = "%tM분";
 		strList.add(String.format(sdate1, date1));
-		
 		sdate1 = "%tS초";
 		strList.add(String.format(sdate1, date1));
+		
 		System.out.println(strList);
 	}
 	
@@ -260,14 +304,16 @@ public class Sample1 {
 		//		try-catch문으로 감싸주고, catch 블록에서 잡힌 InterruptedException은 무시.
 		for(int i=0;i<10;i++) {
 			try {
-				int elements = rd.nextInt(99) + 1; // 1 ~ 99 사이의 랜덤값
+				int elements = rd.nextInt(99) + 1; // (int) (Math.random() * 99 + 1)
 				
-				Thread.sleep(3000); // 3초간 일시정시 후 재실행
-				date2.add(Calendar.SECOND, 3); // 멈춰진 시간에 대해 3초씩 추가
+				// sleep()메서드 이용하여 3초간 일시정지
+				// 멈춘 시간에 대해 3초 추가 후 (? 3초간 일시정지 후 랜덤값을 출력하도록 코딩하였으므로 )
+				// 생성된 랜덤값 ArrayList에 저장
+				Thread.sleep(3000);
+				date2.add(Calendar.SECOND, 3);
 				String msg = date2.get(Calendar.HOUR)+":"+date2.get(Calendar.MINUTE)+":"+date2.get(Calendar.SECOND);
 				
-				System.out.print((i+1)+"회: "+elements+" | ");
-				System.out.println(msg); // 3초 후에 출력되는지 확인
+				System.out.print((i+1)+"회: "+elements+" | ");System.out.println(msg); // 3초 후에 출력되는지 확인
 				intList.add(elements);
 				
 			} catch(InterruptedException e) {
@@ -291,12 +337,14 @@ public class Sample1 {
 		for(int i=0;i<10;i++) {
 			try {
 				int elements = rd.nextInt(99) + 1;
-				// 생성된 랜덤값이 랜덤값 저장 정수 컬렉션에 존재하지 않는 신규값인 경우
-				// 3초에 정기적으로 생성되는 랜덤값을 ArrayList 에 저장한다.
+
 				if(!intList.contains(elements)) {
+					// 생성된 랜덤값이 ArrayList에 존재하지 않는 신규값인 경우
+					// 3초 후 정기적으로 생성되는 랜덤값을 ArrayList 에 저장한다.
 					Thread.sleep(3000);
 					date2.add(Calendar.SECOND, 3);
 					
+					// 3초마다 생성되는 랜덤값의 저장 시간을 저장하기 위해서
 					int year = date2.get(Calendar.YEAR); // 년
 					int month = date2.get(Calendar.MONTH) + 1; // MONTH는 0부터 시작됨. 월
 					int day = date2.get(Calendar.DATE); // 일
@@ -311,11 +359,11 @@ public class Sample1 {
 					intList.add(elements);
 					strList.add(msg);
 				}
-				// 생성된 랜덤값이 랜덤값 저장 컬렉션 내 이미 존재하는 경우
-				// 현재 인덱스에서 랜덤값을 재생성 한다.
 				else {
-					--i;
+					// 3초마다 생성된 랜덤값이 ArrayList 내 이미 존재하는 경우
+					// 현재 인덱스에서 랜덤값을 재생성 한다.
 					System.out.println("Duplicate!!"); // 중복여부 확인
+					i--;
 				}
 				
 			} catch(InterruptedException e) {
@@ -343,6 +391,33 @@ public class Sample1 {
 		 * 	- 위 과정을 10번 반복하여 모든 문자열을 입력한 총 시간과 정확하게 입력한 문자열의 수, 잘못
 		 * 	  입력한 문자열의 수를 테이블 형태로 출력하게 한다. 
 		 */
+		// csv파일 읽기
+		List<List<String>> aList = new ArrayList<List<String>>(); // csv파일 읽고 저장할 ArrayList
+		BufferedReader br = null;
+		try {
+			br = Files.newBufferedReader(Paths.get("C:\\Users\\Default\\Documents\\ArrayListEg.csv"));
+			String line="";
+			while((line=br.readLine())!=null) {
+				List<String> tmpList = new ArrayList<String>();
+				String[] arr = line.split(",");
+				tmpList=Arrays.asList(arr);
+				System.out.println(tmpList);
+				aList.add(tmpList);
+			}
+		}catch(FileNotFoundException e){
+            e.printStackTrace();
+        }catch(IOException e){
+            e.printStackTrace();
+        }finally{
+            try{
+                if(br != null){
+                    br.close();
+                }
+            }catch(IOException e){
+                e.printStackTrace();
+            }
+        }
+		
 	}
 	
 	public static void main(String[] args) {
@@ -351,7 +426,7 @@ public class Sample1 {
 		//ex7();
 		//ex6();
 		//ex5();
-		//ex4();
+		//ex4_2();
 		//ex3();
 		//ex2();
 		//ex1();
