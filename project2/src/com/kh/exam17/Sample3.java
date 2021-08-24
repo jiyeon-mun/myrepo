@@ -53,6 +53,7 @@ class Subject {
 public class Sample3 {
 
 	public static void main(String[] args) {
+		// 클래스 타입 객체를 갖는 ArrayList
 		List<Subject> sList = new ArrayList<Subject>();
 		sList.add(new Subject("과학",70));
 		sList.add(new Subject("영어",90));

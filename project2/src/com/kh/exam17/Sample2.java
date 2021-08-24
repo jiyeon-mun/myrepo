@@ -60,6 +60,8 @@ class RNumber {
 public class Sample2 {
 
 	public static void main(String[] args) {
+		// 클래스 타입 객체를 갖는 ArrayList
+		
 		System.out.println(new Date()); // 현재시간 출력
 		
 		GregorianCalendar gcStart = new GregorianCalendar();
