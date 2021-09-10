@@ -20,7 +20,9 @@ public class Sample5 {
 		System.out.println(p.getProperty("key1"));
 		
 		try {
-			p.store(new FileWriter("prop"), "My Properties"); //  store() : 저장하기
+			// 현재 위치에서 prop 파일을 만들어라
+			// 현재 위치: Sample5를 실행하는 위치 = project3
+			p.store(new FileWriter("prop"), "My Properties");
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

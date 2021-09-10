@@ -20,15 +20,16 @@ public class OracleCloudConnect {
 	// 초기화 블럭; 코드 내 계정 정보없이 계정에 접근; Properties 활용
 	{
 		// 사용자 홈 디렉터리 경로를 알아낸다
-		String userHome = System.getenv("user.home");
+		String userHome = System.getProperty("user.home");
 		try {
 			// 사용자 홈 디렉터리에 위치한 oracle_connection.prop 파일 열기
-			// info.load(new FileReader(userHome+"/oracle_connection.prop"));
+			// oracle_connection.prop 파일이 project3, myrepo 위치에 존재할 필요가 없음
+			info.load(new FileReader(userHome+"/oracle_connection.prop"));
 			
-			// 현재 위치에서의 oracle_connection.prop 파일 열기
-			info.load(new FileReader("oracle_connection.prop"));
+			// 현재 위치에서 oracle_connection.prop 파일 읽어라; project3
+			// info.load(new FileReader("oracle_connection.prop"));
 			
-			// 상위 위치에서 oracle_connection.prop 파일 열기
+			// 상위 위치에서 oracle_connection.prop 파일 열기; myrepo
 			// info.load(new FileReader("../oracle_connection.prop"));
 	
 		} catch (FileNotFoundException e) {
