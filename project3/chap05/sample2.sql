@@ -35,6 +35,7 @@ SELECT *
              , LAST_NAME
           FROM EMPLOYEES);
 
+
 WITH TEMP AS (
     SELECT EMPLOYEE_ID
          , FIRST_NAME
@@ -42,6 +43,24 @@ WITH TEMP AS (
       FROM EMPLOYEES
 )
 SELECT * FROM TEMP;
+
+/*
+  ROWNUM : 조회 결과에 대해 행 번호를 부여하기 위해 사용하는 ORACLE 기능
+  쿼리문 실행순서는 FROM -> WHERE -> SELECT -> ORDER BY 순으로
+  ROWNUM은 WHERE절 조건까지 만족시킨 SELECT 조회결과에 대해서 부여되는 순번으로
+  즉, ORDER BY 전에 부여되며, ROWNUM이 붙은 상태로 ORDER BY가 반영되어 맨 나중에 실행된다.
+  
+  정렬된 데이터에 순번을 매기기 위해서는 ORDER BY와 ROWNUM을 이용해야 하는데
+  다만 같이 사용되는 경우에는 순번이 섞여버리는 현상이 발생하게 된다.
+  이를 해결하기 위해서는 서브쿼리에서 먼저 ORDER BY 후 ROWNUM 을 부여해야 한다.
+*/
+SELECT ROWNUM
+     , CONCAT(FIRST_NAME, ' ' || LAST_NAME) AS "NAME"
+     , SALARY
+  FROM (SELECT *
+          FROM EMPLOYEES
+         ORDER BY SALARY DESC)
+ WHERE ROWNUM <= 3;
 
 
 
