@@ -62,6 +62,17 @@ SELECT ROWNUM
          ORDER BY SALARY DESC)
  WHERE ROWNUM <= 3;
 
+WITH TEMP AS( -- 임시 테이블을 만들어서 다음 쿼리에 사용하기 위해 쓰인다.
+  SELECT *
+    FROM EMPLOYEES
+   ORDER BY SALARY DESC
+)
+SELECT ROWNUM
+     , FIRST_NAME || ' ' || LAST_NAME AS "NAME"
+     , SALARY
+  FROM EMPLOYEES
+ WHERE ROWNUM <= 3;
+
 
 
 -- 랭킹 조회
