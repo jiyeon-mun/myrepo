@@ -5,16 +5,19 @@
         <!-- <meta http-equiv="refresh" content="3;url=https://naver.com"> 3초 후 url 이동 -->
         <title>문서 제목</title>
         <!--        MIME Type -->
-        <link type="image/png" rel="icon" href="/myrepo//project4/static/icon/default.png">
-        <link type="text/css" rel="stylesheet" href="/myrepo/project4/static/css/basic.css">
-        <!--                                    같은 서버 내 파일 연결
-                                                외부 서버의 파일의 경우 href 경로 앞에 http://localhost/ 붙이기 -->
+        <link type="image/png" rel="icon" href="/static/icon/default.png">
+        <link type="text/css" rel="stylesheet" href="/static/css/basic.css">
+        <base href="/other/" target="_blank">
+        <!-- test.html 파일 _self : 현재 창에서 열리게
+                            _blank : 새 창으로 열리게
+                            _parent 또는 _top : -->
+        <script type="text/javascript" src="/static/js/basic.js"></script>
+        <style>
+            body {background-color: cornflowerblue;}
+        </style>
     </head>
-    <body>
-        <!-- URL    Server IP|Port|Path/FileName
-                                   C:/Users/wldus/eclipse-workspace/myrepo/project4/chap01/sample1.html
-             http://127.0.0.1:5500/myrepo/project4/chap01/sample1.html
-        -->
-        문서 내용 작성
+    <body onload="test()">
+        <!-- /other/test.html -->
+        <a href="test.html">페이지 링크</a>
     </body>
 </html>
