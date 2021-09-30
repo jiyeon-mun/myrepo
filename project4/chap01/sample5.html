@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>폼 관련 태그</title>
+</head>
+<body>
+    <h1>기본 폼 양식</h1>
+    <!-- method : GET(data 공개) / POST(data 비공개) -->
+    <form action="/server/location" method="GET">
+        <fieldset>
+            <legend>입력</legend>
+            <input type="text" name="val">
+            <button type="submit">전송</button>
+        </fieldset>
+    </form>
+
+    <h1>폼과 입력 양식 분리</h1>
+    <form id="f2" action="/server/location2" method="GET"></form>
+    <fieldset form="f2">
+        <legend>입력</legend>
+        <input type="text" name="val" form="f2">
+        <button type="submit" form="f2">Form2 전송</button>
+    </fieldset>
+
+    <form id="f3" action="/server/location3" method="GET">
+        <input type="text" name="val">
+    </form>
+    <button type="submit" form="f3">Form3 전송</button>
+
+
+    <h1>input 태그</h1>
+    <!-- 파일 업로드 시 form의 추가 속성으로 필요함 -> enctype="multipart/form-data" -->
+    <form action="/server/location4" method="GET">
+        <div>
+            <!-- value : 전송 시 전달할 값으로 초기 값의 역할 -->
+            텍스트 입력 : <input type="text" name="v1" value="data1" minlength="2" maxlength="8"
+            size="8" placeholder="텍스트입력" required>
+        </div>
+        <div>
+            패스워드 입력 : <input type="password" name="v2" value="data2" minlength="2" maxlength="8"
+            size="8" placeholder="암호입력" required>
+        </div>
+        <div>
+            <!-- 사용자에게 보이지 않으나 value 를 이용해 값을 넣을 수 있음 -->
+            입력 숨김 : <input type="hidden" name="v3" value="data3" readonly>
+        </div>
+        <div>
+            <!--
+                id : type 구분자로 중복 불가능
+                name : 구분자, 명칭, 같은 그룹은 값이 같아야 한다.(중복 가능)
+                [checked] : 옵션이 적용된 버튼이 처음에 선택되어 있음
+
+                for : label로 묶을 id이자 input 에서 지정한 id와 동일해야 한다; label 태그의 속성
+            -->
+            <!-- 다중선택 가능; 활성/비활성 -->
+            체크박스 : <input type="checkbox" id="c1" name="v4" value="data4" checked><label for="c1">가</label>
+            <input type="checkbox" id="c2" name="v4" value="data5"><label for="c2">나</label>
+            <input type="checkbox" id="c3" name="v4" value="data6"><label for="c3">다</label>
+        </div>
+        <div>
+            <!-- 다중선택 불가능(단일선택만 가능); 활성/비활성은 다른 버튼을 클릭함으로 동작-->
+            라디오버튼 : <input type="radio" id="r1" name="v5" value="data7"><label for="r1">가</label>
+            <input type="radio" id="r2" name="v5" value="data8" checked><label for="r2">나</label>
+            <input type="radio" id="r3" name="v5" value="data9"><label for="r3">다</label>
+        </div>
+        <div>
+            <!-- value : button 에 표시되는 값 -->
+            각종버튼 : <input type="button" value="버튼" onclick="alert('클릭!')">
+            <input type="submit" value="전송">
+            <input type="reset" value="초기화">
+        </div>
+        <div>
+            <!-- alt : src 가 올바르지 않을 때 오류 이미지와 "작성 내용"이 뜬다. -->
+            이미지 : <input type="image" src="/static/icon/default.pn" alt="이미지 설명">
+        </div>
+        <div>
+            <!-- [multiple] : 파일 다중 선택 가능 -->
+            파일선택 : <input type="file" name="v6" accept=".txt,.prop,image/png" multiple>
+        </div>
+        <div>
+            <!-- 사용자가 선택한 색을 받는다. -->
+            색 선택 : <input type="color" name="v7" oninput="color_out.value=this.value">
+            <output name="color_out"></output>
+        </div>
+        <div>
+            날짜 입력 : <input type="date" name="v8" value="2021-09-30" min="2021-01-01" max="2021-12-31">
+        </div>
+        <div>
+            시간 입력 : <input type="time" name="v9" value="15:30">
+        </div>
+        <div>
+            <!-- 이메일 형식 체크; @ 존재여부-->
+            이메일 입력 : <input type="email" name="v10">
+        </div>
+        <div>
+            슬라이드바 : <input type="range" id="rng" name="v11"
+            min="10" max="100" step="10" list="marking" oninput="out.value=this.value">
+        <!-- 10 단위 마다 구분선 -->
+        <datalist id="marking">
+            <option value="10"></option>
+            <option value="20"></option>
+            <option value="30"></option>
+            <option value="40"></option>
+            <option value="50"></option>
+            <option value="60"></option>
+            <option value="70"></option>
+            <option value="80"></option>
+            <option value="90"></option>
+            <option value="100"></option>
+        </datalist>
+        <output name="out"></output>
+    </div>
+    <div>
+        <select name="v12" size="3" multiple>
+            <option value="s1">선택/콤보 박스1</option>
+            <option value="s2">선택/콤보 박스2</option>
+            <option value="s3" selected>선택/콤보 박스3</option>
+            <option value="s4">선택/콤보 박스4</option>
+        </select>
+        <select name="v13">
+            <optgroup label="분류1">
+                <option value="s1">선택/콤보 박스1</option>
+                <option value="s2">선택/콤보 박스2</option>
+            </optgroup>
+            <optgroup label="분류2">
+                <option value="s3">선택/콤보 박스3</option>
+                <option value="s4">선택/콤보 박스4</option>
+            </optgroup>
+        </select>
+    </div>
+    <div>
+        <!-- 5행 50열 크기 형태, 최소 10 글자 이상, 최대 500자
+             resize:none; textarea 사이즈 고정 -->
+        <textarea name="v14" cols="50" rows="5" placeholder="500자 제한 입력"
+            minlength="10" maxlength="500" style="resize:none;"></textarea>
+    </div>
+    <div>
+        <progress value="20" max="100"></progress> <label>progress</label>
+    </div>
+    <div>
+        <meter value="20" min="0" max="100" low="25" high="75" optimum="80"></meter><br>
+            <meter value="50" min="0" max="100" low="25" high="75" optimum="80"></meter><br>
+            <meter value="85" min="0" max="100" low="25" high="75" optimum="80"></meter>
+    </div>
+    <div>
+            <meter value="20" min="0" max="100" low="25" high="75" optimum="10"></meter><br>
+            <meter value="50" min="0" max="100" low="25" high="75" optimum="10"></meter><br>
+            <meter value="85" min="0" max="100" low="25" high="75" optimum="10"></meter>
+        </div>
+        <!--
+            optimum  <  low  <  high
+               10       20       30
+                  value   value      value
+                  green   yellow     red
+     low  <  high  <  optimum
+      10      20         30
+         value    value      value
+          red     yellow     green
+        -->
+    <div>
+        <button type="submit">전송</button>
+        <button type="reset">초기화</button>
+        <button type="button">버튼</button>
+        </div>
+    </form>
+</body>
+</html>

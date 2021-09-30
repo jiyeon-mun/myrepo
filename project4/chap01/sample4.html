@@ -1,125 +1,54 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
     <meta charset="UTF-8">
-    <title>Document</title>
+    <title>영역 관련 태그</title>
     <style>
-        table{
-            border-style: solid;
-            border-color: black;
-            border-collapse : collapse;
+        header{
+            height: 100px;
+            background-color: cadetblue;
         }
-        td,th{
-            border-style: dotted;
-            border-color: black;
-            text-align: center;
-        } th{
-            background-color: darkgray;
+        section{
+            float: left; /* 특정 요소를 띄워서 정렬 또는 배치 : aside 박스를 왼쪽에 배치 */
+            width: 70%;
+            box-sizing: border-box; /* width 가 % 에 맞춰서 화면에 배치되도록 */
+            padding: 10px;
+            background-color: coral;
+        }
+        article{
+            height: 50px;
+            background-color: cyan;
+        }
+        aside{
+            float: left; /* aside 박스를 왼쪽에 띄움 */
+            width: 30%;
+            box-sizing: border-box;
+            height: 100px;
+            background-color: lavender;
+        }
+        footer{
+            clear: both; /* float 의 영향을 받지 않도록 해제 : 왼쪽 오른쪽 모두 floating 된 요소 지정 해제 */
+            background-color: lightseagreen;
+        }
+        a{
+            position: fixed; /* 브라우저 전체에 대해서 고정시킨다. */
+            right: 10px;
+            bottom: 10px;
         }
     </style>
 </head>
 <body>
-    <b>2021년 9월</b><br>
-    <h2>급여명세서</h2>
-    <table>
-        <tr>
-            <td style="text-align: right;">성명:</td>
-            <td></td>
-            <td style="text-align: right;">부서:</td>
-            <td></td>
-            <td style="text-align: right;">직책:</td>
-            <td></td>
-            <td style="text-align: right;">지급일:</td>
-            <td></td>
-        </tr>
-    </table>
-    <table>
-        <thead>
-            <tr>
-                <th>지급항목</th>
-                <th>지급액</th>
-                <th>공제항목</th>
-                <th>공제액</th>
-            </tr>
-        </thead>
-        <tr>
-            <td>기본급</td>
-            <td></td>
-            <td>소득세</td>
-            <td></td>
-        </tr>
-        <tr>
-            <td>직책수당</td>
-            <td></td>
-            <td>주민세</td>
-            <td></td>
-        </tr>
-        <tr>
-            <td>연장수당</td>
-            <td></td>
-            <td>고용보험</td>
-            <td></td>
-        </tr>
-        <tr>
-            <td>휴일수당</td>
-            <td></td>
-            <td>국민연금</td>
-            <td></td>
-        </tr>
-        <tr>
-            <td>상여금</td>
-            <td></td>
-            <td>장기요양</td>
-            <td></td>
-        </tr>
-        <tr>
-            <td>기타</td>
-            <td></td>
-            <td>건강보험</td>
-            <td></td>
-        </tr>
-        <tr>
-            <td>식대</td>
-            <td></td>
-            <td>연말정산</td>
-            <td></td>
-        </tr>
-        <tr>
-            <td>교통비</td>
-            <td></td>
-            <td></td>
-            <td></td>
-        </tr>
-        <tr>
-            <td>복지후생</td>
-            <td></td>
-            <td></td>
-            <td></td>
-        </tr>
-        <tr>
-            <td>기타</td>
-            <td></td>
-            <td></td>
-            <td></td>
-        </tr>
-        <tr>
-            <td></td>
-            <td></td>
-            <td style="background-color: gainsboro;"><b>공제합계</b></td>
-            <td></td>
-        </tr>
-        <tr>
-            <td style="background-color: gainsboro;"><b>급여계</b></td>
-            <td></td>
-            <td style="background-color: gainsboro;"><b>차감수령액</b></td>
-            <td></td>
-        </tr>
-    </table>
-    <table>
-        <tr>
-            <td rowspan="2" style="text-align: left;">귀하의 노고에 감사드립니다.</td>
-            <td rowspan="2" style="text-align: left;">(주)회사</td>
-        </tr>
-    </table>
+    <header id="top">
+        <nav>메뉴가 만들어질 영역</nav>
+    </header>
+    <section>
+        <article>본문 콘텐츠가 생성될 영역 1</article>
+        <article>본문 콘텐츠가 생성될 영역 2</article>
+    </section>
+    <aside>광고 및 외부 링크 목록</aside>
+    <footer>
+        회사 소개 및 사이트 맵, 저작권 정보
+        <a href="#top">페이지 상단으로 이동</a>
+    </footer>
 </body>
 </html>
