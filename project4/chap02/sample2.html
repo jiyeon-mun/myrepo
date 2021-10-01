@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>CSS 예제2 </title>
+    <link type="text/css" rel="stylesheet" href="/static/css/ch2_2.css">
+</head>
+<body>
+    <h2>Pseudo Selector 1</h2>
+    <form>
+        <div>
+            <input class="text-input" type="text">
+        </div>
+        <div>
+            <input class="password-input" type="password">
+        </div>
+        <div>
+            <input class="password-input" type="password" disabled>
+        </div>
+        <div>
+            <a href="/join/">회원가입</a> | <a href="/chap02/sample1.html">아이디/패스워드 찾기</a>
+        </div>
+        <div>
+             <input id="remember" type="checkbox"><label for="remember">기억하기</label>
+        </div>
+    </form>
+
+    <h2>Pseudo Selector 2</h2>
+    <table>
+        <tr>
+            <td>col 1</td><td>col 2</td>
+            <td>col 3</td><td>col 4</td>
+            <td>col 5</td><td>col 6</td>
+        </tr>
+        <tr>
+            <td>val 1</td><td>val 2</td>
+            <td>val 3</td><td>val 4</td>
+            <td>val 5</td><td>val 6</td>
+        </tr>
+        <tr>
+            <td>val 7</td><td>val 8</td>
+            <td>val 9</td><td>val 10</td>
+            <td>val 11</td><td>val 12</td>
+        </tr>
+    </table>
+
+    <h2>Pseudo Selector 3</h2>
+    <p class="f-latter">
+        첫번째 글자의 스타일을 변경합니다.
+    </p>
+    <p class="f-line">
+        첫번째 줄의 스타일을 변경합니다.
+        첫번째 줄은 브라우저 화면 크기에 따라
+        변경이 됩니다. 따라서 브라우저의 크기를
+        늘이거나 줄여서 확인하세요.
+    </p>
+
+    <span class="cls-color" id="id-color" style="color: orange;">
+        스타일이 중복 되었을 때 태그->속성 순으로 적용됨.<br>
+        class -> id -> inline -> !important 순으로 적용<br>
+        !important 를 선언한 속성에 가장 먼저 우선순위 부여한다.(개별 속성 적용)
+    </span>
+</body>
+</html>

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>CSS ex</title>
+    <!-- CSS 는 실행 순서대로 적용되기 때문에 동일한 스타일에 대해서는 계속해서 덮어씌워진다.(누적)
+         인라인 스타일이 가장 최종적으로 적용됨. -->
+    <link type="text/css" rel="stylesheet" href="/static/css/basic.css"> <!-- 외부 스타일 시트 -->
+
+    <!-- 내부 스타일 시트 -->
+    <style>
+        p{background-color: aquamarine;}
+    </style>
+</head>
+<body>
+    <div>
+        <p style="color: cadetblue;">inline style</p> <!-- 인라인 스타일 시트 -->
+    </div>
+</body>
+</html>

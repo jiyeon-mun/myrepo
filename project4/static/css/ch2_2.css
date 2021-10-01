@@ -1,0 +1,108 @@
+[class*=input]:active {
+    /* class 속성값이 input 글자로 포함하는 태그에 대해
+      클릭하는(active) 경우 */
+      background-color: chocolate;
+}
+[class*=input]:hover {
+    /* class 속성값이 input 글자로 포함하는 태그에 대해
+      마우스 오버하면(hover) */
+    background-color: yellow;
+}
+
+[type=checkbox]:checked {
+    box-shadow: 0 0 0 2px red;
+}
+
+:checked+label {
+    color: red;
+}
+
+input:focus {
+    background-color: lightgreen;
+}
+
+input:enabled {
+    /* input 요소 선택, 클릭, 입력, 포커스 가능 */
+    background-color: aliceblue;
+}
+
+input:disabled {
+    /* input 요소 선택, 클릭, 입력, 포커스 불가능 */
+    background-color: black;
+}
+
+:link {
+    color: cornflowerblue;
+}
+
+:visited {
+    color: crimson;
+}
+
+/* tr 행 td 열 */
+tr:first-child {
+    font-weight: bold;
+}
+td:nth-child(3n) {
+    /* () 안의 숫자는 1 부터 시작
+      2n 은 짝수행, 2n-1 은 홀수행...
+      수열관계 표현 가능 */
+    background-color: azure !important;
+}
+td:nth-child(3n-1) {
+    background-color: aquamarine;
+}
+td:nth-child(3n-2) {
+    background-color: aqua;
+}
+td:nth-child(3) {
+    background-color: dodgerblue;
+}
+tr:last-child {
+    background-color: cornsilk;
+}
+
+h2:first-of-type {
+    background-color: lightcyan;
+}
+h2:nth-of-type(2n-1) {
+    color: dimgray;
+}
+h2:last-of-type {
+    background-color: lightgreen;
+}
+
+.f-latter::first-letter {
+    color: red;
+    font-size: 2em;
+}
+.f-line::first-line {
+    /* 브라우저 크기에 따라 첫번째 줄에만 적용 */
+    color: crimson;
+}
+
+::selection {
+    /* 사용자가 드래그한 글자 선택 */
+    background-color: hotpink;
+}
+
+h2::after {
+    content: " §"
+}
+
+h2::before {
+    content: "■ "
+}
+
+#id-color {
+    color: blue;
+}
+
+.cls-color {
+    color: green;
+}
+
+span {
+    /* !important 로 인해 span 태그에 대한 css 가 순서에 관계없이 강제적용됨. */
+    color: red !important;
+}
