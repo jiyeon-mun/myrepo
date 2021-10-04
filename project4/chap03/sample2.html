@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        .z-idx-style {
+            position: relative;
+        }
+        .z-idx-style>div {
+            position: absolute;
+            display: inline-block;
+            width: 100px;   height: 100px;
+        }
+        .z-idx-style>.lvl-1 {
+            left: 0px;  top: 50px;
+            z-index: 1; /* 어느 요소를 위로 배치하겠느냐 */
+        }
+        .z-idx-style>.lvl-2{
+            left: 25px;  top: 75px;
+            z-index: 2;
+        }
+        .z-idx-style>.lvl-3 {
+            left: 50px;  top: 100px;
+            z-index: 3;
+        }
+
+        .float-style {
+            position: absolute;
+            top: 220px;
+        }
+
+        .float-style > div {
+            display: inline-block;
+            width: 100px; height: 100px;
+        }
+
+        .float-style .left {
+            float: left;
+        }
+        .float-style .right {
+            float: right;
+        }
+        .float-style .clear {
+            clear: both;
+        }
+
+        .bg-1 {
+            background-color: coral;
+        }
+        .bg-2 {
+            background-color: cornflowerblue;
+        }
+        .bg-3 {
+            background-color: crimson;
+        }
+    </style>
+</head>
+<body>
+    <section>
+        <article class="z-idx-style">
+            <h2>z-index</h2>
+            <div class="lvl-1" style="background-color: red;"></div>
+            <div class="lvl-2" style="background-color: blue;"></div>
+            <div class="lvl-3" style="background-color: green;"></div>
+        </article>
+
+        <article class="float-style">
+            <h2>float</h2>
+            <div class="bg-1">1</div>
+            <div class="bg-2 right">2</div>
+            <div class="bg-3">3</div>
+        </article>
+    </section>
+</body>
+</html>
