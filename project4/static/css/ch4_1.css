@@ -1,0 +1,57 @@
+.side-menu {
+    list-style-type: none; /* 불릿 사용하지 않음 */
+    background-color: blanchedalmond;
+    display: inline-block;
+    width: 200px;
+    margin: 0px;    padding: 0px;
+}
+
+.menu-item>a {
+    box-sizing: border-box;
+    display: block;
+    padding: 1em 2em;
+    text-decoration: none;
+    background-color: navy;
+    color: white;
+    font-weight: 700;
+}
+.menu-item>a:hover {
+    background-color: white;
+    color: navy;
+}
+
+/* menu-item 클래스 내부의 후손 active 클래스에 대해서 */
+.menu-item .active {
+    background-color: darkcyan;
+}
+
+.dropdown {
+    position: relative;
+}
+
+.sub-menu {
+    list-style-type: none;
+    background-color: rgb(75, 75, 196);
+    margin: 0;  padding: 0;
+    display: none;
+    width: 100%;
+     /* 원하는 위치 지정하여 배치 */
+    position: absolute;
+    left: 100%; /* right: -100%; 와 동일 */
+    top: 0;
+}
+.sub-menu-item>a {
+    display: block;
+    padding: 1em 0 1em 3em;;
+    text-decoration: none;
+    color: white;
+    font-weight: 700;
+}
+
+.sub-menu-item>a:hover {
+    background-color: cornflowerblue;
+}
+
+.dropdown:hover .sub-menu {
+    display: block;
+}
