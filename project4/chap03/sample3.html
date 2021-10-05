@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style> 
+        .newspaper {
+          /* column-width: 120px; */
+          column-count: 3;
+          column-gap: 2em;
+          column-rule-color: red;
+          column-rule-style: solid;
+          column-rule-width: 1px;
+        }
+        .col-span { /* 전체 열 하나의 묶음 */
+          column-span: all;
+        }
+
+
+        table {
+            width: 300px;
+            /* height: 600px; */
+            border: 1px solid black;
+            border-collapse: collapse; /* table 의 border 와 td,th 의 border 를 합쳐 한 줄로 표현되게 */
+            /* border-spacing: 10px 10px; */
+            /* empty-cells: hide; */
+
+            /* 너비 고정 (단, 옆 셀의 범위를 넘어감) */
+            table-layout: fixed; /* 셀 태그에 word-break: break-all; height: auto; 추가 적용 */
+        }
+        td,th {
+            border: 1px solid black;
+            word-break: break-all; /* 너비 고정 시 옆 셀의 범위로 넘어가지 않게 */
+            height: auto; /* 개행에 따라 높이가 늘어남 */
+        }
+
+        .w120 {
+            width: 120px;
+        }
+
+        #example1 {
+        caption-side: bottom;
+        }
+        #example2 {
+        caption-side: top;
+        }
+    </style>
+</head>
+<body>
+    <h1>The column-width Property</h1>
+    <p>The column-width property specifies the column width:</p>
+
+    <div class="newspaper">
+    <h2 class="col-span">다단 스타일의 컨텐츠를 만드기 위한 CSS 속성</h2>
+    Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.
+    Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming id quod mazim placerat facer possim assum. Typi non habent claritatem insitam; est usus legentis in iis qui facit eorum claritatem. Investigationes demonstraverunt lectores legere me lius quod ii legunt saepius.
+    </div>
+
+    <hr>
+
+    <h1>The caption-side Property</h1>
+    <p>The caption-side property specifies the placement of a table caption:</p>
+    <h2>caption-side: bottom:</h2>
+    <table id="example1">
+        <caption>Table 1.1 Customers</caption>
+        <tr>
+            <th class="w120">Company1111111111111111</th>
+            <th>Contact</th>
+            <th>Country</th>
+        </tr>
+        <tr>
+            <td class="w120">Alfreds Futterkiste</td>
+            <td>Maria Anders</td>
+            <td>Germany</td>
+        </tr>
+        <tr>
+            <td class="w120">Berglunds snabbköp</td>
+            <td>Christina Berglund</td>
+            <td>Sweden</td>
+        </tr>
+        <tr>
+            <td class="w120">Centro comercial Moctezuma</td>
+            <td>Francisco Chang</td>
+            <td>Mexico</td>
+        </tr>
+        <tr>
+            <td class="w120">Ernst Handel</td>
+            <td>Roland Mendel</td>
+            <td>Austria</td>
+        </tr>
+    </table>
+
+    <h2>caption-side: top (default):</h2>
+    <table id="example2" border="1">
+        <caption>Table 1.1 Customers</caption>
+        <colgroup>
+            <col class="w120">
+            <col>
+            <col>
+        </colgroup>
+        <tr>
+            <th>Company</th>
+            <th>Contact</th>
+            <th>Country</th>
+        </tr>
+        <tr>
+            <td>Alfreds Futterkiste</td>
+            <td>Maria Anders</td>
+            <td>Germany</td>
+        </tr>
+        <tr>
+            <td>Berglunds snabbköp</td>
+            <td>Christina Berglund</td>
+            <td>Sweden</td>
+        </tr>
+        <tr>
+            <td>Centro comercial Moctezuma</td>
+            <td>Francisco Chang</td>
+            <td>Mexico</td>
+        </tr>
+        <tr>
+            <td>Ernst Handel</td>
+            <td>Roland Mendel</td>
+            <td>Austria</td>
+        </tr>
+    </table>
+</body>
+</html> 
