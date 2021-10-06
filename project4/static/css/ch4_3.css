@@ -1,0 +1,49 @@
+table {
+    /* table 의 border 와 td,th 의 border 각각의 선을 한 줄로 합친다.  */
+    border-collapse: collapse;
+    width: 100%;
+}
+
+td,th {
+    padding: 0 1em; /* 상하 좌우 */
+    /* 글자가 다른 열의 자리를 침범할 때 개행하면서 높이가 증가함 */
+    word-break: break-all;
+    height: auto;
+}
+
+thead>tr { /* th 와 동일 */
+    background-color: #ff4d4d;
+    color: white;
+    border-bottom: 2px solid black;
+}
+tbody>tr:last-child {
+    border-bottom: 2px solid black;
+}
+
+tbody>tr:nth-child(2n-1) { /* 홀수 행에 대해서 */
+    background-color: #f7dddd;
+}
+
+table .left {
+    text-align: left;
+}
+table .right {
+    text-align: right;
+}
+table .center {
+    text-align: center;
+}
+
+tbody>tr:hover {
+    background-color: hsl(0, 85%, 82%);
+}
+
+table .w-80 {
+    width: 80px;
+}
+table .w-160 {
+    width: 160px;
+}
+table .mw-240 {
+    min-width: 240px; /* 최소 너비 */
+}

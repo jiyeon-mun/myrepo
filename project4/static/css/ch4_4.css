@@ -1,0 +1,77 @@
+* {
+    /* 사용자 입력란 너비 full 로 인해 스크롤이 생기지 않도록 */
+    box-sizing: border-box;
+    padding: 0;
+}
+
+.btn {
+    background-color: #b33693;
+    color: white;
+    padding: 0.5em 1em;
+    border-style: none;
+    border-radius: 4px;
+}
+
+.btn:hover {
+    background-color: plum;
+    cursor: pointer; /* 커서 아이콘 모양 변경 */
+}
+.btn:active {
+    box-shadow: 0 0 4px #be0b92;
+}
+
+.circle {
+    padding: 1em;
+    border-radius: 50%;
+}
+
+[type=text] {
+    padding: 0.5em 0.5em;
+    border-style: solid;
+    border-color: gainsboro;
+    border-width: 1px;
+    border-radius: 4px;
+}
+
+[type=text]:hover {
+    background-color: plum   ;
+}
+[type=text]:focus {
+    /* 클릭 시 border 의 별도의 outline style 과 border 색상 */
+    outline-style: none;
+    border-color: #be0b92;
+}
+
+.paging>a {
+    border: 1px solid #be0b92;
+    padding: 0.5em 1em;
+    color: #751c5f;
+    font-weight: bold;
+    text-decoration: none;
+    /* 블럭 요소 정렬 왼쪽으로 */
+    float: left;
+}
+
+.paging>a:hover {
+    background-color: plum;
+    color: aliceblue;
+}
+
+.paging a:first-child {
+    border-top-left-radius: 4px;
+    border-bottom-left-radius: 4px;
+}
+.paging a:last-child {
+    border-top-right-radius: 4px;
+    border-bottom-right-radius: 4px;
+}
+
+
+.clear {
+    /* float 해제: left, right 둘 다 */
+    clear: both;
+}
+
+.wfull {
+    width: 100%;
+}
