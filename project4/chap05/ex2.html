@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>메인화면 폼</title>
+    <link rel="stylesheet" href="/static/css/ch5_ex2.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+</head>
+<body>
+    <header>
+        <nav class="nav-flex">
+            <div class="logo">
+                <img src="/static/img/docker-docs-logo.svg" alt="Docker Docs image">
+            </div>
+            <ul class="top-menu">
+                <li class="menu-item"><a class="menu-link" href="#">Home</a></li>
+                <li class="menu-item"><a class="menu-link" href="#">Guildes</a></li>
+                <li class="menu-item"><a class="menu-link" href="#">Manuals</a></li>
+                <li class="menu-item"><a class="menu-link" href="#">Reference</a></li>
+                <li class="menu-item"><a class="menu-link" href="#">Articles</a></li>
+            </ul>
+            <div class="theme-switch">
+                <span class="material-icons" style="font-size: 18px;">wb_sunny</span>
+                <span class="switch-check">
+                    <input id="theme-switch-input" type="checkbox">
+                    <label class="slider" for="theme-switch-input"></label>
+                </span>
+                <span class="material-icons" style="font-size: 18px;">nightlight_round</span>
+            </div>
+        </nav>
+        <div class="search">
+            <h1>What can we help you find?</h1>
+            <input type="text" placeholder="Search for guides, terms, commands and more...">
+        </div>
+    </header>
+    <section>
+        <div class="col2-content">
+            <div class="card">
+                <div class="card-image"></div>
+                <div class="content">
+                    <h3 class="card-title">Get started</h3>
+                    <article class="card-text">Learn Docker basics and the benefits of containerizing your applications.</article>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-image"></div>
+                <div class="content">
+                    <h3 class="card-title">Download and install</h3>
+                    <article class="card-text">Download and install Docker on your machine in a few easy steps.</article>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-image"></div>
+                <div class="content">
+                    <h3 class="card-title">Guides</h3>
+                    <article class="card-text">Learn how to set up your Docker environment and start containerizing your applications.</article>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-image"></div>
+                <div class="content">
+                    <h3 class="card-title">Language-specific guides</h3>
+                    <article class="card-text">Learn how to containerize language-specific applications using Docker.</article>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-image"></div>
+                <div class="content">
+                    <h3 class="card-title">Manuals</h3>
+                    <article class="card-text">Browse through the manuals and learn how to use Docker products.</article>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-image"></div>
+                <div class="content">
+                    <h3 class="card-title">Reference</h3>
+                    <article class="card-text">Browse through the CLI and API reference documentation.</article>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>

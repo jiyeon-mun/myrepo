@@ -1,0 +1,75 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+.table-section {
+    width: 840px;
+}
+
+.table {
+    border-top-style: solid;
+    border-width: 1px;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+.table td, .table th {
+    border-bottom-style: solid;
+    border-width: 1px;
+    border-color: #dfdfdf;
+    padding: 12px 16px;
+}
+
+.w-160 {
+    width: 160px;
+}
+
+.column-title {
+    font-weight: bold;
+}
+
+.column-title > a {
+    text-decoration: none;
+    color: black;
+}
+
+.column-title > a:hover {
+    font-weight: bolder;
+    text-decoration: underline;
+}
+
+.column-date {
+    text-align: center;
+    color: #636363;
+}
+
+.center {
+    text-align: center;
+}
+
+.paging {
+    margin: 24px 0;
+}
+
+.paging > a {
+    display: inline-block;
+    width: 30px; height: 30px;
+    text-decoration: none;
+    color: black;
+}
+
+.paging > .active {
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+/* paging 줄 맞추기 */
+.first-page, .pre-page, .next-page, .last-page {
+    border-style: solid;
+    border-width: 1px;
+    border-color: #a0a0a0;
+    position: relative;
+    top: 5px;
+}

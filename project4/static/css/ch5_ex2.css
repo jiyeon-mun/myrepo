@@ -1,0 +1,144 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Open Sans",sans-serif;
+}
+
+nav {
+    background-color: #2697ed;
+}
+
+.nav-flex {
+    display: flex;
+    justify-content: space-between;
+}
+
+nav > .logo {
+    padding: 8px 16px;
+}
+
+nav > .logo > img {
+    width: 160px; height: 28px;
+}
+
+nav > .top-menu {
+    list-style-type: none;
+    background-color: #2697ed;
+}
+
+nav > .top-menu > .menu-item {
+    display: inline-block;
+    padding: 12px 0;
+    background-color: #2697ed;
+    border-bottom: 5px solid #2697ed;
+}
+
+nav > .top-menu > .menu-item:hover {
+    color: #93cbf6;
+    border-bottom: 5px solid #93cbf6;
+}
+
+nav > .top-menu > .menu-item > .menu-link {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 0 12px;
+}
+
+nav > .top-menu > .menu-item:hover > .menu-link {
+    color: #93cbf6;
+}
+
+nav > .theme-switch {
+    display: inline-block;
+    margin: 0 12px;
+}
+
+.switch-check {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 30px;
+}
+
+.switch-check > input[type=checkbox] {
+    opacity: 0;
+}
+
+.switch-check > .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-color: #93cbf6;
+    border-radius: 15px;
+}
+
+.switch-check > .slider::before {
+    position: absolute;
+    content: "";
+    width: 24px;
+    height: 24px;
+    left: 2px;
+    bottom: 3px;
+    background-color:#2697ed;
+    border-radius: 12px;
+    transition: 0.5s;
+}
+
+.switch-check > input[type=checkbox]:checked + .slider::before {
+    transform: translateX(32px);
+}
+
+header > .search {
+    text-align: center;
+    margin: 48px 0;
+}
+
+header > .search > h1 {
+    margin: 12px;
+}
+
+header > .search > input {
+    padding: 12px 24px;
+    width: 680px;
+    font-size: 18px;
+}
+
+.col2-content {
+    display: grid;
+    grid: auto / auto auto;
+    margin: 12px;
+}
+
+.col2-content > .card {
+    border: 1px solid gainsboro;
+    padding: 24px;
+    margin: 12px;
+    cursor: pointer;
+    box-shadow: 0 0 5px 3px #e4e4e4;
+    transition: 0.3s;
+}
+
+.col2-content > .card:hover {
+    padding: 26px;
+    margin: 10px;
+}
+
+.card > .card-image {
+    width: 64px; height: 64px;
+    background-color: #e4e4e4;
+    margin-bottom: 12px;
+}
+
+.card .card-title {
+    font-size: 24px;
+    font-weight: 400;
+    margin-bottom: 12px;
+}
+
+.card .card-text {
+    margin-bottom: 12px;
+}
