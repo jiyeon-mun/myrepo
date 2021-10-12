@@ -1,0 +1,80 @@
+* {
+    box-sizing: border-box;
+}
+
+input {
+    width: 350px;
+}
+textarea {
+    width: 350px;
+    height: 200px;
+    resize: none;
+}
+
+label {
+    display: inline-block;
+    font-weight: bold;
+    width: 80px;
+    text-align: center;
+}
+
+.h200 {
+    line-height: 200px;
+}
+
+.align-left > * {
+    float: left;
+}
+
+.center {
+    text-align: center;
+}
+
+.clear{
+    clear: both;
+}
+
+
+table {
+    width: 100%;
+    border: 1px solid black;
+}
+tr,td {
+    border: 1px solid black;
+    word-break: break-all;
+    height: auto;
+}
+
+.table-head {
+    text-align: center;
+    background-color: lightsalmon;
+    color: white;
+    font-weight: bold;
+}
+.table-foot {
+    text-align: center;
+    background-color: lightsalmon;
+    color: white;
+    font-weight: bold;
+}
+
+.table-body {
+    background-color: rgb(247, 250, 200);
+}
+
+table .w-50 {
+    width: 50px;
+}
+table .w-70 {
+    width: 70px;
+}
+table .w-140 {
+    width: 140px;
+}
+table .w-100 {
+    width: 100px;
+}
+
+input[type="button"] {
+    width: 100px;
+}
