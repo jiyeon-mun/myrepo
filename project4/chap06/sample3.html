@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>HTML 요소 정보를 알아오기 위한 방법</title>
+    <script type="text/javascript" src="/static/js/ch06_3.js"></script>
+</head>
+<body>
+    <div>
+        <h3>document.getElementById("아이디 속성 값")</h3>
+        <p>HTML 태그 요소의 아이디 속성의 값을 지정하여 요소 정보를 가져온다.
+            아이디 속성의 값은 중복 되어서는 안된다. 중복되는 경우 원하는 요소를
+            찾을 수 없다.(첫번째 요소에 대해서만 사용 가능. 두번째,세번째.. 활용 불가)
+        </p>
+        <div>
+            <input type="text" id="username" placeholder="아이디 입력">
+            <input type="text" id="password" placeholder="패스워드 입력">
+            <input type="text" id="password" placeholder="패드워드 확인">
+            <button type="button" onclick="getId();">확인</button>
+        </div>
+    </div>
+
+    <div>
+        <h3>document.getElementsByName("네임 속성 값")</h3>
+        <p>HTML 태그 요소의 네임 속성의 값을 지정하여 요소 정보를 가져온다.
+            네임 속성의 값은 중복할 수 있으며, 중복되는 모든 요소 정보를 찾는다.
+        </p>
+        <div>
+            <input type="text" name="username" placeholder="아이디 입력">
+            <input type="text" name="password" placeholder="패스워드 입력">
+            <input type="text" name="password" placeholder="패드워드 확인">
+            <button type="button" onclick="getName();">확인</button>
+        </div>
+    </div>
+
+    <div>
+        <h3>document.getElementByTagName("태그명")</h3>
+        <p>HTML 태그명을 지정하여 해당 태그의 요소 정보를 가져온다.
+            동일한 태그명을 사용하는 모든 요소 정보를 찾는다.
+        </p>
+        <div>
+            <input type="text" placeholder="아이디 입력">
+            <input type="text" placeholder="패스워드 입력">
+            <input type="text" placeholder="패드워드 확인">
+            <button type="button" onclick="getTagName();">확인</button>
+        </div>
+    </div>
+
+    <div>
+        <h3>document.getElementsByClassName("클래스 속성 값")</h3>
+        <p>HTML 태그 요소의 클래스 속성 값을 지정하여 요소 정보를 가져온다.
+            클래스 속성의 값은 중복할 수 있으며, 중복되는 모든 요소 정보를 찾는다.
+        </p>
+        <div>
+            <input type="text" class="input-form" placeholder="아이디 입력">
+            <input type="text" class="input-form" placeholder="패스워드 입력">
+            <input type="text" class="input-form" placeholder="패드워드 확인">
+            <button type="button" onclick="getClass();">확인</button>
+        </div>
+    </div>
+
+    <div>
+        <h3>document.querySelector("CSS 선택자")</h3>
+        <p>HTML 태그 요소 정보를 찾을 때 CSS 선택자를 사용하는 방식으로 요소 정보를 찾는다.
+            하나의 요소만을 찾아 준다.
+        </p>
+        <div>
+            <button type="button" onclick="getSelector();">확인</button>
+        </div>
+    </div>
+
+    <div>
+        <h3>document.querySelectorAll("CSS 선택자")</h3>
+        <p>HTML 태그 요소 정보를 찾을 때 CSS 선택자를 사용하는 방식으로 요소 정보를 찾는다.
+            모든 요소를 찾아 준다.
+        </p>
+        <div>
+            <button type="button" onclick="getSelectorAll();">확인</button>
+        </div>
+    </div>
+</body>
+</html>
