@@ -1,0 +1,49 @@
+.hidden {
+    display: none;
+}
+
+.error {
+    display: block;
+    color: red;
+}
+
+
+.lot {
+    font-size: 24px;
+    padding-top: 4px;
+    font-weight: bold;
+    margin-right: 8px;
+    text-align: center;
+    border-radius: 50%;
+    display: inline-block;
+    box-sizing: border-box;
+    vertical-align: middle;
+    border: 2px solid black;
+    width: 48px;  height: 48px;
+}
+
+.num1to10 {
+    color: orange;
+    box-shadow: inset -4px -4px 12px orange;
+    border-color: orange;
+}
+.num11to20 {
+    color: red;
+    box-shadow: inset -4px -4px 12px red;
+    border-color: red;
+}
+.num21to30 {
+    color: gray;
+    box-shadow: inset -4px -4px 12px gray;
+    border-color: gray;
+}
+.num31to40 {
+    color: green;
+    box-shadow: inset -4px -4px 12px green;
+    border-color: green;
+}
+.num41to45 {
+    color: blue;
+    box-shadow: inset -4px -4px 12px blue;
+    border-color: blue;
+}

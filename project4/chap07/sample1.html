@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link rel="stylesheet" href="/static/css/ch07_1.css">
+    <script type="text/javascript" src="/static/js/ch07_1.js"></script>
+</head>
+<body>
+    <h2>배열</h2>
+    <p>var 변수명 = [값1, 값2, 값3, ...]<br>
+        위와 같은 형식으로 사용</p>
+    <p>배열에 담을 수 있는 데이터 타입(자료형)은 제한이 없다.<br>
+        서로 다른 자료형을 가진 값들을 하나의 배열에 저장할 수 있다.<br>
+        자바에서의 리스트 컬렉션과 비슷하다.</p>
+    <p>new 연산자와 Array 객체를 통해 생성 가능</p>
+    <p>var 변수명 = new Array(); <br>
+        var 변수명 = new Array(크기); 크기를 지정해도 배열에 원소를 계속해서 저장할 수 있다.<br>
+        var 변수명 = new Array(값1, 값2, ...);</p>
+
+    <hr>
+
+    <h2>예제 문제</h2>
+
+    <h3>19단 출력</h3>
+    <div>
+        <input type="number" id="v1" min="1" max="19">
+        <button type="button" onclick="f1();">확인</button>
+        <label id="alert1" class="hidden">
+            <small>1 ~ 19 사이의 값으로만 입력하세요.</small>
+        </label>
+    </div>
+    <div id="res1"></div>
+
+    <br>
+    <h3>로또 번호 자동 생성</h3>
+    <div>
+        <button type="button" onclick="f2();">생성</button>
+    </div>
+    <div id="res2"></div>
+</body>
+</html>
