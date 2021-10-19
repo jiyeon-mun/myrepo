@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script type="text/javascript" src="/static/js/ch07_2.js"></script>
+</head>
+<body>
+    <h1>함수 선언</h1>
+    <pre><code>
+    function 함수명([매개변수[, 매개변수[, ...]]]) {
+        연산 코드;
+        [return [결과값];]
+    }
+    </code></pre>
+    <h3>예제 코드</h3>
+    <pre><code>
+    function func1(x) {
+        var result = x + 10;
+        return result;
+    }
+    </code></pre>
+    <div>
+        <label>x = </label>
+        <input type="text" id="var1"> <!-- 입력한 값 string 자료형으로 인식되기 때문에 Number 이용해 형 변환 -->
+        <button type="button" onclick="res1.value=func1(Number(var1.value))">예제 실행</button>
+    </div>
+    <div>
+        <label>반환된 결과 값 : </label>
+        <input type="text" id="res1" readonly>
+    </div>
+
+    <hr>
+
+    <h1>익명 함수</h1>
+    <pre><code>
+    var f2 = function([매개변수[, 매개변수[, ...]]]) {
+        연산 코드;
+        [result [결과값];]
+    }
+
+    // 실행
+    f2([전달인자[, 전달인자[, ...]]]);
+    </code></pre>
+    <h3>예제 코드</h3>
+    <pre><code>
+    function func2() {
+        var f2 = function() {
+            return 10;
+        }
+        var result = f2();
+        return result;
+    }
+    </code></pre>
+    <div>
+        <label>x = </label>
+        <input type="text" id="var2">
+        <button type="button" onclick="res2.value=func2(Number(var2.value))">예제 실행</button>
+    </div>
+    <div>
+        <label>반환된 결과 값 : </label>
+        <input type="text" id="res2" readonly>
+    </div>
+
+    <hr>
+
+    <h1>호출 없이 바로 실행하는 함수</h1>
+    <pre><code>
+    var y = function([매개변수[, 매개변수[, ...]]]) {
+        연산 코드;
+        [return [결과값];]
+    }([전달인자[, 전달인자[, ...]]]);
+    </code></pre>
+    <h3>예제 코드</h3>
+    <pre><code>
+    function func3(x) {
+        var y = function() {
+            return 10;
+        }();
+        var result = x + y;
+        return result;
+    }
+    </code></pre>
+    <div>
+        <label>x = </label>
+        <input type="text" id="var3">
+        <button type="button" onclick="res3.value = func3(Number(var3.value));">예제 실행</button>
+    </div>
+    <div>
+        <label>반환된 결과 값:</label>
+        <input type="text" id="res3" readonly>
+    </div>
+
+    <hr>
+
+    <h1>자바스크립트 함수의 매개변수 처리</h1>
+    <p>자바스크립트의 함수는 전달인자의 수와 매개변수의 수가 동일하지 않아도
+        함수가 동작되도록 구성되어 있다.</p>
+    <p>매개변수의 수보다 전달인자의 수가 많은 경우에는 arguments 배열에 순차적으로
+        저장되며, 매개변수의 수보다 전달인자의 수가 적은 경우에는 매개변수에 전달되지
+        않은 인자에 대해 undefined 로 처리가 된다.</p>
+    <p>팁 : arguemtns 배열에는 모든 전달인자가 저장되어 있다.</p>
+    <h3>예제 코드</h3>
+    <pre><code>
+    function func4(x, y) {
+        console.log("x: " + x);
+        console.log("y: " + y);
+        console.log("arguments: ");
+        for(var v of arguments) {
+            console.log("\t\t\t" + v);
+        }
+    }
+    </code></pre>
+    <div>
+        <label>전달인자를 쉼표 구분자로 사용하여 입력하세요.</label>
+        <input type="text" id="res4" placeholder="1,2,3,4,...">
+        <button type="button" onclick="eval('func4(' + res4.value + ');');">인자전달</button>
+        <!-- eval() 문자열을 자바스크립트 코드로 실행하기 만들어주는 함수 -->
+    </div>
+
+    <hr>
+
+    <h1>함수의 전달인자로 함수를 전달</h1>
+    <p>함수의 전달인자로 함수를 전달할 때 '함수명'만 적어야 한다.</p>
+    <p>func5(func6) : func5 함수의 전달 인자로 func6 함수를 사용 <br>
+    func5(func6()) : func5 함수의 전달 인자로 func6 함수의 실행 결과를 사용</p>
+    <h3>예제 코드</h3>
+    <pre><code>
+    function func5(x) {
+        return x();
+    }
+
+    function func6() {
+        return 10;
+    }
+    </code></pre>
+    <div>
+        <input type="text" id="res5" readonly>
+        <button type="button" onclick="res5.value = func5(func6);">예제실행</button>
+    </div>
+    <hr>
+
+</body>
+</html>
