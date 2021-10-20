@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script type="text/javascript" src="/static/js/ch08_4.js"></script>
+    <style>
+        td { padding: 8px; }
+    </style>
+</head>
+<body>
+    <h1>이벤트</h1>
+    <h2>인라인 이벤트 설정</h2>
+    <div>
+        <p>아래의 버튼을 클릭하면 이벤트가 발생됩니다.</p>
+        <button type="button" onclick="alert('클릭 이벤트 발생!!');">클릭!</button>
+    </div>
+    <hr>
+    <h2>이벤트 속성에 함수 연결</h2>
+    <div>
+        <p>아래의 버튼을 클릭하면 이벤트가 발생됩니다.</p>
+        <button type="button" id="id_btn1">클릭!</button>
+        <script>
+            var btn1 = document.getElementById("id_btn1");
+            btn1.onclick = function() { // callback 함수
+                alert("클릭 이벤트 발생!!");
+            };
+        </script>
+    </div>
+    <hr>
+    <h2>표준 이벤트 모델</h2>
+    <div>
+        <p>아래의 버튼을 클릭하면 이벤트가 발생됩니다.</p>
+        <button type="button" id="id_btn2">클릭!</button>
+        <script>
+            var btn2 = document.getElementById("id_btn2");
+            btn2.addEventListener("click", function() { alert("클릭 이벤트 발생!!" ); });
+        </script>
+    </div>
+    <hr>
+    <h2>이벤트 종류</h2>
+    <table id="id_table" border="1" style="border-collapse: collapse;">
+        <tbody>
+            <tr>
+                <td>load : 웹페이지의 정보(css, javascript, 이미지 등)가 로드 완료된 시점에 발생</td>
+                <td>foucs : 엘리먼트가 포커스를 받았을 때 발생</td>
+                <td>blur : 엘리먼트가 포커스를 잃었을 때 발생</td>
+                <td>reset : 리셋버튼을 눌렀을 때 발생</td>
+                <td>submit : 제출(submit)버튼을 눌렀을 때 발생</td>
+                <script>
+                    window.onload = function() {
+                        var test1 = document.getElementById("id_test1");
+                        test1.value = "모든 페이지의 로드가 완료되었습니다.";
+                        test1.addEventListener("focus",
+                            function() { test1.value = "포커스를 받았습니다."; });
+                        test1.addEventListener("blur",
+                            function() { test1.value = "포커스를 잃었습니다."; });
+
+                        var form1 = document.getElementById("id_form1");
+                        /* addEventListener 참고
+                           동일한 이벤트에 addEventListener 메서드로 이벤트 함수를
+                           반복적으로 등록하는 경우 등록된 모든 이벤트가 실행됨!
+                           가장 마지막에 등록한 이벤트가 가장 나중에 실행.
+                        */
+                        form1.addEventListener("submit",
+                            function(e) { // // 함수의 매개변수 e : 이벤트를 발생시킨 객체를 의미
+                                console.log(e);
+                                if(!formValid(e.target)) { // ch08_4.js 의 formValid() 내의 매개변수 f 를 가르킴
+                                    // 기본 이벤트 동작 취소(방지)
+                                    e.preventDefault();
+                                }
+                            }
+                        );
+                    };
+                </script>
+            </tr>
+            <tr>
+                <td>fullscreenchange : 전체화면 모드로 전환되거나 다시 일반모드로 전환 될 때 발생</td>
+                <td>resize : 브라우저 창의 크기를 조절할 때 발생</td>
+                <td>scroll : 스크롤을 동작 했을 때 발생</td>
+                <td>cut : 잘라내기 작업을 했을 때 발생</td>
+                <td>copy : 복사 작업을 했을 때 발생</td>
+                <script>
+                    function eventInsert() {
+                        window.addEventListener("resize",
+                            function(e) {
+                                console.log("x:"+ e.target.outerWidth +
+                                    ", y:" + e.target.outerHeight);
+                            }
+                        );
+                        document.addEventListener("scroll",
+                            function() {
+                                console.log(window.scrollY);
+                            }
+                        );
+                        var test2 = document.getElementById("id_test2");
+                        // Ctrl + x
+                        test2.addEventListener("cut",
+                            function() {
+                                console.log("잘라내기 작업을 하였습니다.");
+                            }
+                        );
+                        // Ctrl + c
+                        document.addEventListener("copy",
+                            function(e) {
+                                e.clipboardData.clearData();
+                                e.clipboardData.setData("text/plain", "");
+                                e.preventDefault();
+                                console.log("복사 금지!");
+                            }
+                        );
+                        // Ctrl + v
+                        test2.addEventListener("paste",
+                            function() {
+                                console.log("붙여넣기 작업을 하였습니다.");
+                            }
+                        );
+                        
+                        window.addEventListener("keydown",
+                            function(e) {
+                                console.log(e.key);
+                            }
+                        );
+                        
+                        window.addEventListener("keyup",
+                            function(e) {
+                                console.log(e.key);
+                            }
+                        );
+                        
+                        window.addEventListener("keypress",
+                            function(e) {
+                                console.log(e.key);
+                            }
+                        );
+                        
+                    }
+                    window.addEventListener("load",
+                        function() {
+                            eventInsert();
+                        }
+                    );
+                </script>
+            </tr>
+            <tr>
+                <td>paste : 붙여넣기 작업을 했을 때 발생</td>
+                <td>keydown : 임의의 키보드가 눌렸을 때 발생</td>
+                <td>keypress : 쉬프트, Fn, CapsLock등 특수키를 제외한 키가 눌린 상태일 때 발생(연속적으로 실행됨)</td>
+                <td>keyup : 키 누룸이 해제됐을 때 발생</td>
+                <td>mouseenter : 마우스가 요소 위에 올려져 있을 때 발생</td>
+            </tr>
+            <tr>
+                <td>mouseover : 마우스가 요소 위에(하위 요소 포함) 올려져 있을 때 발생</td>
+                <td>mousemove : 마우스가 요소 위에서 이동하고 있을 때 발생</td>
+                <td>mousedown : 마우스가 요소 위에서 눌렸을 때 발생</td>
+                <td>mouseup : 마우스가 요소 위에서 down 되었다 놓였을 때 발생</td>
+                <td>click : 마우스가 요소 위에서 클릭(down->up) 했을 때 발생</td>
+            </tr>
+            <tr>
+                <td>dblclick : 마우스가 요소 위에서 두번 클릭 됐을 때 발생</td>
+                <td>contextmenu : 마우스 오른쪽 버튼을 클릭했을 때 발생(메뉴 생성 전에 발생)</td>
+                <td>wheel : 마우스 휠을 움직였을 때 발생</td>
+                <td>mouseleave : 마우스가 요소 안에서 밖으로 떠났을 때 발생</td>
+                <td>mouseout : 마우스가 요소(하위 요소 포함) 안에서 밖으로 떠났을 때 발생</td>
+                <script>
+                    function eventInsert3() {
+                        document.addEventListener("contextmenu",
+                            function(e) {
+                                e.preventDefault();
+                                alert("오른쪽 마우스 클릭 금지!");
+                            }
+                        );
+                    }
+                    window.addEventListener("load",
+                        function() {
+                            eventInsert3();
+                        }
+                    );
+                </script>
+            </tr>
+            <tr>
+                <td>select : 어떠한 텍스트가 선택되고 있을 때 발생</td>
+                <td>dragstart : 드래그를 시작할 때 발생</td>
+                <td>drag : 드래그 하고 있는 동안 발생</td>
+                <td>dragend : 드래그가 끝났을 때 발생(마우스버튼 해제 및 Esc 키 입력 시)</td>
+                <td>dragenter : 드래그된 요소나 텍스트 선택이 유효한 드랍 대상에 들어 왔을 때</td>
+            </tr>
+            <tr>
+                <td>dragover : 드래그된 요소나 텍스트 선택이 유효한 드랍 대상에서 드래그되고 있을 때</td>
+                <td>dragleave : 드래그된 요소나 텍스트 선택이 유효한 드랍 대상에서 벗어났을 때</td>
+                <td>drop : 드래그된 요소나 텍스트 선택이 유효한 드랍 대상에서 드랍됐을 때</td>
+                <td></td>
+                <td></td>
+                <script>
+                    var origin; // 전역 변수로 선언함으로써 다른 함수들 내에서 사용할 수 있음
+                    function eventInsert4() {
+                        var t = document.getElementById("id_table");
+                        // for 문 사용은 td 요소들에 대한 이벤트 추가를 한 번에 묶어서 하기 위해 사용됨
+                        for(var cell of t.getElementsByTagName("td")) {
+                            cell.setAttribute("draggable", true); // 셀 단위 요소 드래그하기 위해
+                            cell.addEventListener("dragstart",
+                                function(e) {
+                                    // 드래그 시작 정보 저장 in 전역 변수
+                                    origin = e.target;
+                                }
+                            );
+                            // 유효한 요소인지 판별하기 위해 아래 코드를 주석처리하여 사용해 본다.
+                            // 주석 처리 후 드래그 할 때 마우스 클릭 모양이 금지 표시인 경우 유효안 드랍 대상이 아님
+                            cell.addEventListener("dragover",
+                                function(e) {
+                                    e.preventDefault(); // 기본이벤트를 쓰지 않음.
+                                }
+                            );
+                            cell.addEventListener("dragleave",
+                                function(e) {
+                                    e.target.style = "background-color: white;"
+                                }
+                            );
+                            cell.addEventListener("dragenter",
+                                function(e) {
+                                    // 유효한 드랍 대상이 아니라도 범위 내 들어온 경우 모두 적용된다.
+                                    e.target.style = "background-color: gray;"
+                                }
+                            );
+                            // 실질적인 드래그 수행; dragstart 에서 저장된 정보에 대해서
+                            cell.addEventListener("drop",
+                                function(e) {
+                                    e.preventDefault(); // 기본 메서드가 가진 기능을 사용하지 않기 위해서
+                                    var temp = e.target.innerText;
+                                    e.target.innerText = origin.innerText;
+                                    origin.innerText = temp;
+                                    e.target.style = "background-color: white;"
+                                }
+                            );
+                        }
+
+                        var droparea = document.getElementById("id_droparea");
+                        droparea.addEventListener("dragover",
+                            function(e) {
+                                e.preventDefault();
+                            }
+                        );
+                        droparea.addEventListener("dragenter",
+                            function(e) {
+                                e.target.style = "background-color: rgb(250, 250, 250);"
+                            }
+                        );
+                        droparea.addEventListener("dragleave",
+                            function(e) {
+                                e.target.style = "background-color: gray;"
+                            }
+                        );
+                        droparea.addEventListener("drop",
+                            function(e) {
+                                e.preventDefault();
+                                if(e.dataTransfer.items) {
+                                    e.target.innerText = "";
+                                    for(var i = 0; i < e.dataTransfer.items.length; i++) {
+                                        if(e.dataTransfer.items[i].kind == "file" && e.dataTransfer.items[i].type == "text/plain") {
+                                            var f = e.dataTransfer.items[i].getAsFile();
+                                            e.target.innerText += ", " + f.name;
+                                            f.text().then(function(d) {
+                                                document.getElementById("file_context").value = d;
+                                            });
+                                        } else {
+                                            document.getElementById("id_droparea").innerText = "text 파일 형식만 지원 합니다.";
+                                        }
+                                    }
+                                }
+                            }
+                        );
+                    }
+                    window.addEventListener("load",
+                        function() {
+                            eventInsert4();
+                        }
+                    );
+                </script>
+            </tr>
+        </tbody>
+    </table>
+    <div>
+        <h3>이벤트 동작 확인용 요소들</h3>
+        <form id="id_form1" action="/send/data/">
+            <div>
+                <input type="text" id="id_test1" name="v1">
+            </div>
+            <div>
+                <input type="number" id="id_test2" name="v2">
+            </div>
+            <div>
+                <input type="password" id="id_test3" name="v3">
+            </div>
+            <div style="margin-top: 4px;">
+                <input type="reset" value="리셋">
+                <input type="submit" value="제출">
+                <button type="reset">리셋</button>
+                <button type="submit">제출</button>
+            </div>
+            <div id="id_droparea" style="background-color: gray">
+                파일 드랍 영역
+            </div>
+            <textarea id="file_context" cols="30" rows="10" readonly></textarea>
+            <div>
+                <button type="button" id="btn_fullscreen">전체화면</button>
+            </div>
+        </form>
+    </div>
+</body>
+</html>

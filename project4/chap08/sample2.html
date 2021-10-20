@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>수직 메뉴</title>
+    <link type="text/css" rel="stylesheet" href="/static/css/ch4_1.css">
+    <script type="text/javascript" src="/static/js/ch08_2.js"></script>
+</head>
+<body>
+    <div>
+        <ul class="side-menu">
+            <li class="menu-item">
+                <a href="#">메뉴 1</a>
+            </li>
+            <li class="menu-item">
+                <a href="#">메뉴 2</a>
+            </li>
+            <li class="menu-item">
+                <a href="#" class="active">메뉴 3</a>
+            </li>
+            <li class="menu-item dropdown">
+                <a href="#">메뉴 4</a>
+                <ul class="sub-menu">
+                    <li class="sub-menu-item">
+                        <a href="#">하위 메뉴 1</a>
+                    </li>
+                    <li class="sub-menu-item">
+                        <a href="#">하위 메뉴 2</a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+    <div>
+        <h3>메뉴 추가</h3>
+        <label for="id_add_menu">메뉴제목:</label>
+        <input type="text" id="id_add_menu">
+        <button type="button" onclick="addMenu(id_add_menu.value);">확인</button>
+    </div>
+</body>
+</html>

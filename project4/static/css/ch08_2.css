@@ -1,0 +1,6 @@
+/* 반응형 웹을 위한 media 쿼리 */
+section#main {
+    width: 480px;
+    margin: 0 auto;
+    background-color: darkturquoise;
+}

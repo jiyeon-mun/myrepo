@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link type="text/css" rel="stylesheet" href="/static/css/ch08_1.css">
+    <link type="text/css" rel="stylesheet" href="/static/css/ch08_2.css"
+        media="screen and (max-width: 660px)">
+</head>
+<body>
+    <script>
+        window.onresize =
+            function() {
+                var w = document.getElementById("w");
+                var h = document.getElementById("h");
+                w.innerText = window.innerWidth;
+                h.innerText = window.innerHeight;
+            };
+    </script>
+    <section id="main">
+        <article>
+            브라우저 크기 width: <span id="w"></span>
+        </article>
+        <article>
+            브라우저 크기 height: <span id="h"></span>
+        </article>
+    </section>
+</body>
+</html>

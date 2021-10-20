@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>로그인 폼</title>
+    <link type="text/css" rel="stylesheet" href="/static/css/ch4_5.css">
+    <script type="text/javascript" src="/static/js/ch08_3.js"></script>
+</head>
+<body>
+    <div class="login">
+        <div class="login-form">
+            <form>
+                <div class="input-form">
+                    <label for="">Username or email</label>
+                    <input type="text" class="text-input" onblur="requiredItem(this);">
+                </div>
+                <div class="input-form">
+                    <label for="">Password</label>
+                    <input type="password" name="" id="id_pass">
+                </div>
+                <!-- show password 체크 여부에 따라 비밀번호 입력 시 보이든 가리든 한다. -->
+                <div class="input-form">
+                    <label><input type="checkbox" id="id_chk_show_pass" onclick="hiddenPass(this);"> show password</label>
+                </div>
+                <div class="inline-input-form">
+                    <label><input type="checkbox"> Remember me</label>
+                    <a href="#" class="right">Forgot your password?</a>
+                </div>
+                <div class="input-form">
+                    <button type="button" class="block-btn">Sign in</button>
+                </div>
+            </form>
+        </div>
+        <div class="login-form-foot">
+            <span>Don't have an account yet? <a href="#">Register now</a></span>
+        </div>
+    </div>
+</body>
+</html>
