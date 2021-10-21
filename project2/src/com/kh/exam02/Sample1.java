@@ -5,8 +5,8 @@ package com.kh.exam02;
 import com.kh.exam02.oth.OtherPackage;
 
 // com.kh.exam02.oth 하위 모든 클래스를 포함하겠다는 의미이나
-// default 접근제한자를 사용하는 다른 패키지의 클래스를 가져오지 못함
-// OtherPackage만 가져온다.
+// default 접근제한자를 사용하는 OtherPackage2 클래스를 가져오지 못함
+// com.kh.exam02.oth 패키지 하위의 2개의 클래스 중 OtherPackage 클래스만 가져온다.
 // import com.kh.exam02.oth.*;
 
 /*
