@@ -1,0 +1,81 @@
+@import url("https://fonts.googleapis.com/icon?family=Material+Icons");
+
+* {
+    margin: 0; padding: 0;
+    box-sizing: border-box;
+}
+
+h1 {
+    margin: 0.5em 0;
+}
+
+.accordion {
+    margin: 12px;
+}
+
+.accordion .accordion-list {
+    border-left: 1px solid rgb(223, 223, 223);
+    border-right: 1px solid rgb(223, 223, 223);
+    border-radius: 4px;
+    list-style-type: none;
+    padding-inline-start: 0px;
+    margin: 0;
+}
+
+.accordion .accordion-item:first-child {
+    border-top: 1px solid rgb(223, 223, 223);
+    border-radius: 4px 4px 0 0;
+}
+
+.accordion .accordion-item:first-child .accordion-title {
+    border-top-style: none;
+    border-radius: 4px 4px 0 0;
+}
+
+.accordion .accordion-item:last-child {
+    border-bottom: 1px solid rgb(223, 223, 223);
+    border-radius: 0 0 4px 4px;
+}
+
+.accordion .accordion-title {
+    border-top: 1px solid rgb(223, 223, 223);
+    position: relative;
+    cursor: pointer;
+    padding: 1em;
+    transition: 0.5s;
+}
+
+.accordion .accordion-title::after {
+    font-family: "Material Icons";
+    font-size: 36px;
+    content: "\e5cf";
+    position: absolute;
+    right: 12px; top: 8px;
+    transition: 0.5s;
+}
+
+.accordion .accordion-content {
+    overflow: hidden;
+    padding: 0 1em;
+    height: 0;
+    transition: 0.5s;
+}
+
+.accordion .accordion-title.active {
+    border-bottom: 1px solid rgb(223, 223, 223);
+    background-color: #e7f1ff;
+    color: #0c92ee;
+    transition: 0.5s;
+}
+
+.accordion .accordion-title.active::after {
+    transform: rotate(-180deg);
+    transition: 0.5s;
+}
+
+.accordion .accordion-content.open {
+    overflow: hidden;
+    height: fit-content;
+    padding: 1em;
+    transition: 0.5s;
+}
