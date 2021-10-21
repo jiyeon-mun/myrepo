@@ -5,6 +5,7 @@ class Other {
 		System.out.println("메서드 실행이 잘 되었습니다.");
 	}
 	
+	// static 으로 선언된 Other 클래스의 메소드
 	public static void function() {
 		System.out.println("함수 실행이 잘 되었습니다.");
 	}
@@ -24,13 +25,13 @@ public class Sample1 {
 		Other oth = new Other();
 		oth.method();
 		
-		// 다른 클래스의 static으로 정의된 메서드에 접근할 때 별도의 객체 생성없이 접근한다.
+		// 다른 클래스의 static으로 정의된 메서드에 접근할 때 별도의 객체 생성없이 접근( 클래스명.메소드명(); )
 		Other.function();
 		
-		ex1();
-		// 자신의 클래스 내 static으로 선언한 메서드이기 때문에
-		// 자신의 클래스명은 생략해되 되었던 것
 		Sample1.ex1();
+		// 자신의 클래스(Sample1) 내 static으로 선언한 메서드이기 때문에
+		// 자신의 클래스명은 생략할 수 있게 되었던 것이다.
+		ex1();
 	}
 
 }
