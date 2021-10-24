@@ -3,7 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <title>Document</title>
+    <!-- 외부 파일 순서 중요하다. 객체 후 변수 -->
     <link type="text/css" rel="stylesheet" href="/static/css/ch09_1.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <script type="text/javascript" src="/static/js/ch09_1.js"></script>
 </head>
 <body>
@@ -11,8 +13,8 @@
     <div class="accordion">
         <ul class="accordion-list">
             <li class="accordion-item">
-                <div class="accordion-title">Accordion Item #1</div>
-                <p class="accordion-content">
+                <div class="accordion-title active">Accordion Item #1</div>
+                <p class="accordion-content open">
                     Bootstrap의 Accordion을 최대한 유사하게 만들어본 컴포넌트.
                     목록을 클릭할 때 클릭 대상의 내용을 펼쳐보여주고 그 외에는 펼처진 목록이
                     다시 숨겨질 수 있게 한다.
