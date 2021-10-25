@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <button id="btn">클릭 전</button>
+
+<script>
+
+var button = document.getElementById('btn');
+
+button.addEventListener('click', function(){
+
+// button.value = '클릭 후'; 에러
+button.innerHTML = '클릭 후';
+
+// button.style.backgroundColor = 'red'; 오류
+button.style.color = 'red';
+
+});
+
+</script>
+</body>
+</html>
