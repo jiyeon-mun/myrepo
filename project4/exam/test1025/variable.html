@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>scope(유효범위)</title>
+</head>
+<body>
+    <h2>function scope: var</h2>
+    <h4>function 단위</h4>
+    <pre><code>
+    function f1() {
+        var x1 = 10;
+        if(true) {
+            var x2 = 20;
+            console.log("if 안에서 x1 출력 -> " + x1); // 10
+            console.log("if 안에서 x2 출력 -> " + x2); // 20
+        }
+        console.log("if 밖에서 x1 출력 -> " + x1); // 10
+        console.log("if 밖에서 x2 출력 -> " + x2); // java: 접근불가 | javascript: 20
+    }
+    </code></pre>
+    <hr>
+    <h2>block scope: let</h2>
+    <h4>{대괄호} 단위</h4>
+    <pre><code>
+    function f2() {
+        var x1 = 10;
+        if(true) {
+            let x2 = 20;
+            console.log("if 안에서 x1 출력 -> " + x1); // 10
+            console.log("if 안에서 x2 출력 -> " + x2); // 20
+        }
+        console.log("if 밖에서 x1 출력 -> " + x1); // 10
+        console.log("if 밖에서 x2 출력 -> " + x2); // javascript 접근불가
+    }
+    </code></pre>
+</body>
+</html>
