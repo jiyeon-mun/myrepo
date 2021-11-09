@@ -16,13 +16,13 @@ public class AccountDTO {
 		return username;
 	}
 	public void setUsername(String username) {
-		this.username = username;
+		this.username = username.toLowerCase(); // 입력값 소문자 변환
 	}
 
 	public String getPassword() {
 		return password;
 	}
 	public void setPassword(String password) {
-		this.password = password;
+		this.password = password.toLowerCase();
 	}
 }
