@@ -2,7 +2,7 @@ package com.web.guestbook.model;
 
 import java.sql.Date;
 
-public class GuestBookDTO {
+public class GuestBookDTO { // 객체
 	private int id;
 	private String ipaddr;
 	private String context="";

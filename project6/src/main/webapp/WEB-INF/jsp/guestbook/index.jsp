@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import="java.util.List"%>
 <%@ page import="com.web.guestbook.model.*" %>
 <!DOCTYPE html>
 <html>
@@ -14,7 +15,7 @@
 
 	<section>
 		<section>	  <!-- 상대 경로 -->
-			<form action="./guest" method="post"> <!-- 여기서 GuestBookController의 doPost() 코드로 이동됨 -->
+			<form action="./guest" method="post"> <!-- 양식 작성 후 제출 -->
 				<div>
 				<%
 					GuestBookDTO dto = new GuestBookDTO(); // GuestBookDTO 클래스 타입의 dto 객체 생성
@@ -41,24 +42,19 @@
 					</tr>
 				</thead>
 				<tbody>
+					<%
+						List<GuestBookDTO> datas = (List<GuestBookDTO>) request.getAttribute("datas");
+						for(GuestBookDTO data: datas) {
+					%>
 					<tr>
-						<td>3</td>
-						<td>xxx.xxx.x.1.1</td>
-						<td>방명록 내용이 출력됨</td>
-						<td>작성 날짜 영역</td>
+						<td><%=data.getId() %></td>
+						<td><%=data.getIpaddr() %></td>
+						<td><%=data.getContext() %></td>
+						<td><%=data.getDate() %></td>
 					</tr>
-					<tr>
-						<td>2</td>
-						<td>xxx.xxx.x.1.1</td>
-						<td>방명록 내용이 출력됨</td>
-						<td>작성 날짜 영역</td>
-					</tr>
-					<tr>
-						<td>1</td>
-						<td>xxx.xxx.x.1.1</td>
-						<td>방명록 내용이 출력됨</td>
-						<td>작성 날짜 영역</td>
-					</tr>
+					<%		
+						}
+					%>
 				</tbody>
 			</table>
 		</section>
