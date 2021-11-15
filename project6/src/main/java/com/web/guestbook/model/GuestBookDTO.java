@@ -1,6 +1,8 @@
 package com.web.guestbook.model;
 
 import java.sql.Date;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
 public class GuestBookDTO { // 객체
 	private int id;
@@ -22,6 +24,11 @@ public class GuestBookDTO { // 객체
 		this.id = id;
 	}
 	
+	public void setId(String id) {
+		//  int					 String
+		this.id = Integer.parseInt(id); // int로 형변환
+	}
+	
 	public String getIpaddr() {
 		return ipaddr;
 	}
@@ -41,5 +48,12 @@ public class GuestBookDTO { // 객체
 	}
 	public void setDate(Date date) {
 		this.date = date;
+	}
+	
+	public void setResultSet(ResultSet res) throws SQLException {
+		this.id = res.getInt("G_ID");
+		this.context = res.getString("G_CONTEXT");
+		this.ipaddr = res.getString("G_IPADDR");
+		this.date = res.getDate("G_DATE");
 	}
 }
