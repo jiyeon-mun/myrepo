@@ -46,11 +46,15 @@ public class OracleCloudConnect {
 	public ResultSet sendQuery(String query) throws SQLException {
 		// OracleDatabase에 접속 후 Query 전송
 		this.stat = this.conn.createStatement();
-		return this.stat.executeQuery(query);	// 실행 결과로 ResultSet을 받아온다.;
+		// 실행 결과로 ResultSet을 받아온다. SELECT 구문 수행 시 사용
+		return this.stat.executeQuery(query);
 	}
 
 	public int insertQuery(String query) throws SQLException {
 		this.stat = this.conn.createStatement();
+		// 실행 결과로 Int 값을 받아온다. SELECT 구문 제외 다른 구문 수행 시 사용
+		// INSERT,DELETE,UPDEATE 구문에서 반영된 레코드 건 수 반환
+		// DROP,CREATE 구문에서는 -1 반환
 		return this.stat.executeUpdate(query);
 	}
 
