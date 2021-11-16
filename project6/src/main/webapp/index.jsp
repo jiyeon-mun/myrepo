@@ -41,6 +41,7 @@
 		<li><a href="/account/index.html">회원가입</a></li>
 		<li><a href="/guest">방명록</a></li>
 		<li><a href="/bookmark">북마크</a></li>
+		<li><a href="/join">회원가입</a></li>
 	</ul>
 </body>
 </html>
