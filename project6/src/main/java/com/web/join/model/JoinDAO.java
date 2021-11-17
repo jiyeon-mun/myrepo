@@ -41,7 +41,7 @@ public class JoinDAO {
 			System.out.println("JoinDAO select() 메서드 동작 에러 발생");
 		}
 
-		return null;
+		return data;
 	}
 
 	public void close() {
