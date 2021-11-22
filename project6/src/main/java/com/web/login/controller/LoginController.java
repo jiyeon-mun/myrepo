@@ -5,9 +5,11 @@ import java.io.IOException;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.web.login.model.LoginDTO;
 import com.web.login.model.LoginService;
@@ -38,6 +40,18 @@ public class LoginController extends HttpServlet {
 			// 아이디가 있는 경우
 			if(service.confirmPassword()) {
 				// 패스워드가 일치하는 경우
+				
+				// 방법1. 쿠키 이용하여 로그인 정보 가져오기
+				Cookie cookie = new Cookie("login_name", dto.getUsername());
+				cookie.setMaxAge(60*30); // 쿠기정보를 일정 유효시간동안만 저장. 즉, 만료시간 설정; 30분 (초단위)
+				response.addCookie(cookie); // 응답 시 설정한 쿠키를 같이 보내준다.
+				
+				// 방법2. 세션 이용하여 로그인 정보 가져오기
+				// true: 이미 세션정보가 있으면 있는 정보로 반환하고 없으면 새로 생성한다.(기본)
+				// false: 이미 세션정보가 있으면 있는 정보로 반호나하고 없으면 null로 반환.
+				HttpSession session = request.getSession();
+				session.setAttribute("login_name", dto.getUsername()); // 문자열을 session객체로 저장
+				
 				response.sendRedirect("/");
 			} else {
 				// 패스워드 틀림
