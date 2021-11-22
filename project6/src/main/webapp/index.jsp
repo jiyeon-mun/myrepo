@@ -38,10 +38,10 @@
 	</ul>
 	
 	<ul>
-		<li><a href="/account/index.html">회원가입</a></li>
+		<li><a href="/account/join">회원가입account</a></li>
 		<li><a href="/guest">방명록</a></li>
 		<li><a href="/bookmark">북마크</a></li>
-		<li><a href="/join">회원가입</a></li>
+		<li><a href="/join">회원가입join</a></li>
 		<li><a href="/login">로그인</a></li>
 	</ul>
 </body>

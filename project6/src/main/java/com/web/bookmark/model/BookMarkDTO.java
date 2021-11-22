@@ -1,23 +1,21 @@
 package com.web.bookmark.model;
 
 public class BookMarkDTO {
-	private String alias = "";
-	private String url = "";
+	private String name;
+	private String url;
 	
 	public BookMarkDTO() {}
+	public BookMarkDTO(String name, String url) {
+		this.name = name;
+		this.url = url;
+	}
 	
-	public BookMarkDTO(String alias, String url) {
-		this.alias=alias;
-		this.url=url;
+	public String getName() {
+		return name;
 	}
-
-	public String getAlias() {
-		return alias;
+	public void setName(String name) {
+		this.name = name;
 	}
-	public void setAlias(String alias) {
-		this.alias = alias;
-	}
-
 	public String getUrl() {
 		return url;
 	}

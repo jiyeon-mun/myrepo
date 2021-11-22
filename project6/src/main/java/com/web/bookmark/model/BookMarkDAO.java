@@ -8,9 +8,8 @@ import java.util.List;
 import com.jspweb.dbconn.OracleCloudConnect;
 
 public class BookMarkDAO {
-	// database 연결 및 작업
 	private OracleCloudConnect occ;
-
+	
 	public BookMarkDAO() {
 		try {
 			this.occ = new OracleCloudConnect();
@@ -20,16 +19,33 @@ public class BookMarkDAO {
 		}
 	}
 
-	public List<BookMarkDTO> select() { // database 조회
-		List<BookMarkDTO> datas = new ArrayList<BookMarkDTO>();
+	public boolean insert(BookMarkDTO dto) { // 입력 내용 데이터베이스에 저장
+		String query = "INSERT INTO BOOKMARK VALUES("
+				+ "BOOKMARK_SEQ.NEXTVAL, "
+				+ "'" + dto.getName() + "', "
+				+ "'" + dto.getUrl() + "')";
+		
+		int res = 0;
+		try {
+			res = occ.insertQuery(query);
+			occ.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return res == 1 ? true : false;
+	}
 
+	public List<BookMarkDTO> select() { // 저장된 데이터 조회
+		List<BookMarkDTO> datas = new ArrayList<BookMarkDTO>();
+		
 		String query = "SELECT * FROM BOOKMARK ORDER BY B_ID";
-		ResultSet res; // SQL 질의 결과값
+		ResultSet res;
 		try {
 			res = occ.sendQuery(query);
 			while(res.next()) {
 				BookMarkDTO dto = new BookMarkDTO();
-				dto.setAlias(res.getString("B_ALIAS"));
+				dto.setName(res.getString("B_NAME"));
 				dto.setUrl(res.getString("B_URL"));
 				datas.add(dto);
 			}
@@ -38,25 +54,8 @@ public class BookMarkDAO {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-
+		
 		return datas;
-	}
-
-	public boolean insert(BookMarkDTO dto) { // database 등록
-		String query = "INSERT INTO BOOKMARK VALUES("
-				+ "BOOKMARK_SEQ.NEXTVAL, "
-				+ "'" + dto.getAlias() + "', "
-				+ "'" + dto.getUrl() + "')";
-
-		int res = 0;
-		try {
-			res = occ.insertQuery(query); // OracleCloudConnect 클래스의 insertQuery() 반환타입 int
-			occ.close(); // 자원반납 close()
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-
-		return res == 1 ? true : false; // 데이터 삽입 성공 시 1 반환
 	}
 
 	public void commit() {
@@ -66,7 +65,7 @@ public class BookMarkDAO {
 			e.printStackTrace();
 		}
 	}
-
+	
 	public void rollback() {
 		try {
 			occ.rollback();
@@ -74,12 +73,12 @@ public class BookMarkDAO {
 			e.printStackTrace();
 		}
 	}
-
+	
 	public void close() {
 		try {
 			occ.connectionClose();
 		} catch (SQLException e) {
-			e.printStackTrace(); // 모든 작업 완료 후 연결을 끊기 위한 close()
+			e.printStackTrace();
 		}
 	}
 }

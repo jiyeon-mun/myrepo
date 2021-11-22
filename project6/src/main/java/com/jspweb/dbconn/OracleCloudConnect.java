@@ -7,7 +7,7 @@ import java.util.Properties;
 import oracle.jdbc.OracleConnection;
 import oracle.jdbc.pool.OracleDataSource;
 
-public class OracleCloudConnect {
+public class OracleCloudConnect {                              // TNS 이름	WALLET 경로			
 	private final String DB_URL = "jdbc:oracle:thin:@mydb_medium?TNS_ADMIN=C:/Users/wldus/Oracle/network/admin/Wallet_myDB";
 	private Properties info = new Properties();
 	private OracleDataSource ods = null;
@@ -23,8 +23,8 @@ public class OracleCloudConnect {
 		} catch (FileNotFoundException e) {
 			System.out.println("oracle_connection.prop 파일을 찾을 수 없습니다.");
 			System.out.println("기본 연결 계정을 사용합니다.");
-			info.setProperty("user", "user");
-			info.setProperty("password", "password");
+			info.setProperty("user", "user"); // 계정
+			info.setProperty("password", "password"); // 패스워드
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
