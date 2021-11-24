@@ -13,10 +13,12 @@
 	boolean logined = false;
 	String username = "";
 	
-	for(Cookie c: cookie) {
-		if(c.getName().equals("login_name")) { // 만든 쿠키명과 매치하는지 비교
-			logined = true;
-			username = c.getValue(); // 해당 쿠키값 가져오기
+	if(cookie != null) {
+		for(Cookie c: cookie) {
+			if(c.getName().equals("login_name")) { // 만든 쿠키명과 매치하는지 비교
+				logined = true;
+				username = c.getValue(); // 해당 쿠키값 가져오기
+			}
 		}
 	}
 %>
@@ -25,6 +27,7 @@
 		<li><a href="/account/join">회원가입account</a></li>
 		<li><a href="/guest">방명록</a></li>
 		<li><a href="/bookmark">북마크</a></li>
+		<li><a href="/upload">파일업로드</a></li>
 		
 		<%
 			if(logined) {
