@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="AccountMapper">
+  
+  <!-- 새로운 계정 등록 (in 회원 가입) -->
+  <insert id="insertAccount" parameterType="account">
+  	INSERT INTO MEMBERS(id, username, password) VALUES(
+  		#{id}, #{username}, #{password}
+  	)
+  </insert>
+  
+  <!-- 새로운 계정의 회원 정보 등록 (in 회원 가입) -->
+  <insert id="insertAccountInfo" parameterType="accountInfo">
+  	INSERT INTO MEMBERS_INFO(id, firstname, lastname, birthday, email1, email2)
+  	VALUES(
+  		#{id}, #{firstName}, #{lastName}, #{birthday}, #{email1}, #{email2}
+  	)
+  </insert>
+  
+  <!-- 로그인 -->
+  <select id="selectAccount" parameterType="String" resultType="account">
+  	SELECT * FROM MEMBERS
+  	 WHERE USERNAME = #{username}
+  </select>
+  
+  <!-- 중복 아이디 존재 확인 -->
+  <select id="countingAccount" parameterType="account" resultType="_int">
+  	SELECT COUNT(*) FROM MEMBERS WHERE USERNAME = #{username}
+  </select>
+  
+  <!-- 자동 증가 번호 획득; 시퀀스 이용 -->
+  <select id="autoSequence" resultType="_int">
+  	SELECT MEMBERS_SEQ.NEXTVAL FROM DUAL
+  </select>
+  
+  <!-- 로그인 일자 업데이트 -->
+  <update id="updateLoginDate" parameterType="account">
+  	UPDATE MEMBERS SET LOGINDATE = #{loginDate}
+  	 WHERE USERNAME = #{username}
+  </update>
+  
+</mapper>

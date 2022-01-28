@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="boardMapper">
+	<insert id="insertBoard" parameterType="board">
+		INSERT INTO BOARD VALUES(#{id}, #{memid}, #{title}
+		     , #{content}, SYSDATE, SYSDATE, 'N', 0, 0, 0)
+	</insert>
+	
+	<select id="generateSeq" resultType="_int">
+	SELECT BOARD_SEQ.NEXTVAL FROM DUAL
+	</select>
+	
+	<update id="updateBoard" parameterType="board">
+		UPDATE BOARD
+		   SET TITLE = #{title}
+		     , CONTENT = #{content}
+		     , UPDATEDATE = SYSDATE
+		 WHERE ID = #{id}
+	</update>
+	
+	<update id="updateViewCount" parameterType="_int">
+		UPDATE BOARD
+		   SET VCNT = VCNT + 1
+		 WHERE ID = #{id}
+	</update>
+	
+	<update id="updateGoodCount" parameterType="_int">
+		UPDATE BOARD
+		   SET GCNT = GCNT + 1
+		 WHERE ID = #{id}
+	</update>
+	
+	<update id="updateBadCount" parameterType="_int">
+		UPDATE BOARD
+		   SET BCNT = BCNT + 1
+		 WHERE ID = #{id}
+	</update>
+	
+	<select id="selectAll" resultType="board">
+		SELECT A.ID, A.MEMID, B.USERNAME AS "MEMNAME", A.TITLE, A.CONTENT,
+      		   A.CREATEDATE, A.UPDATEDATE, A.DELETED, A.VCNT, A.GCNT, A.BCNT
+  		  FROM BOARD A JOIN MEMBERS B ON A.MEMID = B.ID
+  		 ORDER BY A.ID DESC
+	</select>
+	
+	<select id="selectWriter" resultType="board">
+		SELECT A.ID, A.MEMID, B.USERNAME AS "MEMNAME", A.TITLE, A.CONTENT,
+      		   A.CREATEDATE, A.UPDATEDATE, A.DELETED, A.VCNT, A.GCNT, A.BCNT
+  		  FROM BOARD A JOIN MEMBERS B ON A.MEMID = B.ID
+		 WHERE A.MEMID = #{memid}
+		  ORDER BY A.ID DESC
+	</select>
+	
+	<select id="selectTitle" parameterType="string" resultType="board">
+		SELECT A.ID, A.MEMID, B.USERNAME AS "MEMNAME", A.TITLE, A.CONTENT,
+      		   A.CREATEDATE, A.UPDATEDATE, A.DELETED, A.VCNT, A.GCNT, A.BCNT
+  		  FROM BOARD A JOIN MEMBERS B ON A.MEMID = B.ID
+		 WHERE A.TITLE LIKE '%' || #{title} || '%'
+		 ORDER BY A.ID DESC
+	</select>
+	
+	<select id="selectId" resultType="board">
+		SELECT A.ID, A.MEMID, B.USERNAME AS "MEMNAME", A.TITLE, A.CONTENT,
+      		   A.CREATEDATE, A.UPDATEDATE, A.DELETED, A.VCNT, A.GCNT, A.BCNT
+  		  FROM BOARD A JOIN MEMBERS B ON A.MEMID = B.ID
+		 WHERE A.ID = #{id}
+	</select>
+	
+	<delete id="deleteBoard">
+		DELETE FROM BOARD WHERE ID = #{id}
+	</delete>
+</mapper>
+
+
+
+
+
+
+

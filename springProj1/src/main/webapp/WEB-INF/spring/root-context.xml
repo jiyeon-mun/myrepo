@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:beans="http://www.springframework.org/schema/beans"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
+	
+	<!-- Root Context: defines shared resources visible to all other web components -->
+	<!-- DataSource 정보 등록 -->
+	<context:property-placeholder location="file:///C:/Users/wldus/oracle_connection.prop"/>
+	
+	<beans:bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<beans:property name="driverClassName" value="oracle.jdbc.OracleDriver"></beans:property>
+		<beans:property name="url" value="${url}"></beans:property>
+		<beans:property name="username" value="${user1}"></beans:property>
+		<beans:property name="password" value="${password}"></beans:property>
+	</beans:bean>
+	
+	<!-- DataSoruce 와 마이바티스 연결 -->
+	<beans:bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<beans:property name="dataSource" ref="dataSource"></beans:property>
+		<beans:property name="configLocation" value="classpath:/mybatis/mybatis-config.xml"></beans:property>
+		<beans:property name="mapperLocations" value="classpath:/mybatis/mapper/*.xml"></beans:property>
+	</beans:bean>
+	
+	<!-- DAO 에서 사용할 SQL 세션 생성용 빈; @Autowired -->
+	<beans:bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate">
+		<beans:constructor-arg index="0" ref="sqlSessionFactory"></beans:constructor-arg>
+	</beans:bean>
+	
+	<!-- 트랜젝션 설정; @Transactional: Service 에 등록 -->
+	<beans:bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<beans:property name="dataSource" ref="dataSource"></beans:property>
+	</beans:bean>
+	
+	<tx:annotation-driven transaction-manager="transactionManager" />
+</beans>
