@@ -1,0 +1,125 @@
+@import url(./haf.css);
+
+@font-face {
+		  font-family: "Cafe24Oneprettynight";
+		  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_twelve@1.1/Cafe24Oneprettynight.woff")
+		    format("woff");
+		  font-weight: normal;
+		  font-style: normal;
+		}
+		
+		@font-face {
+    font-family: 'KyoboHandwriting2020A';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2112@1.0/KyoboHandwriting2020A.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+		
+		body {
+		  margin: 0;
+		  padding: 0;
+		  font-family: "Cafe24Oneprettynight";
+		}
+		
+		/* 선택창 */
+		
+		/* 제목입력 */
+		body {
+		  margin: 0;
+		  padding: 0;
+		  font-family: "Cafe24Oneprettynight";
+		}
+		
+		.board_container {
+		  width: 90vw;
+		  margin: 0 auto;
+		  margin-top: 30px;
+		}
+		
+		thead {
+		  text-align: left;
+		  font-size: 24px;
+		}
+		
+		thead tr th {
+		  padding-bottom: 10px;
+		  border-bottom: 1px solid black;
+		}
+		
+		.board_category {
+		  float: left;
+		  margin: 8px 0;
+		}
+		
+		tbody tr:nth-child(2) td {
+		  border-collapse: collapse;
+		}
+		
+		tbody > .board_content {
+		  text-align: left;
+		  vertical-align: top;
+		  height: 220px;
+		  min-height: 300px;
+		}
+		
+		tbody > .board_content td textarea {
+		  width: 99%;
+		  height: 220px;
+		  border: 1px solid black;
+		  resize: none;
+		}
+		
+		@media screen and (max-width: 820px) {
+		  .board_info td {
+		    width: 10vw;
+		  }
+		}
+		
+		/* button */
+		
+		.list_btn_wrap {
+		  width: 90vw;
+		  margin: 0 auto;
+		  display: flex;
+		  justify-content: flex-end;
+		  margin-bottom: 10px;
+		}
+		
+		.btn_save {
+		  width: 100px;
+		  float: right;
+		  background-color: white;
+		  font-weight: bold;
+		  color: black;
+		  border: 0 none;
+		  border-radius: 1px;
+		  cursor: pointer;
+		  padding: 10px 5px;
+		  margin: 10px 5px;
+		  box-shadow: 0 0 0 2px white, 0 0 0 3px orange;
+		}
+		.btn_save:hover {
+		  background-color: wheat;
+		  transition: all 0.5s ease;
+		  cursor: pointer;
+		}
+		
+		.btn_cancle {
+		  width: 100px;
+		  float: right;
+		  background-color: white;
+		  font-weight: bold;
+		  color: black;
+		  border: 0 none;
+		  border-radius: 1px;
+		  cursor: pointer;
+		  padding: 10px 5px;
+		  margin: 10px 5px;
+		  box-shadow: 0 0 0 2px white, 0 0 0 3px gray;
+		}
+		.btn_cancle:hover {
+		  background-color: gainsboro;
+		  transition: all 0.5s ease;
+		  cursor: pointer;
+		}
+

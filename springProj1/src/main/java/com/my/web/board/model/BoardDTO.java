@@ -7,7 +7,6 @@ public class BoardDTO {
 	
     private int id;
     private int memid;
-    private String memname; // memid 이용하여 MEMBERS 테이블에서 username 값 가져오도록
     private String title;
     private String content;
     private Date createdate;
@@ -16,6 +15,7 @@ public class BoardDTO {
     private int vcnt;
     private int gcnt;
     private int bcnt;
+    private String memname; // memid 이용하여 MEMBERS 테이블에서 username 값 가져오도록
     
 	public int getId() {
 		return id;

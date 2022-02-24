@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.my.web.account.model.*;
 
-@Controller
+@Controller // bean 등록
 @RequestMapping(value="/account")
 public class AccountController {
 

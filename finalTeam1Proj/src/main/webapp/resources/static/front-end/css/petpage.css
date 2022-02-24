@@ -1,0 +1,146 @@
+@font-face {
+  font-family: "Cafe24Oneprettynight";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_twelve@1.1/Cafe24Oneprettynight.woff")
+    format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 18px;
+}
+
+hr {
+  width: 500px;
+  border: 1px solid silver;
+}
+
+.logo img{
+  width: 200px;
+  height: 200px;
+}
+.pat_img img {
+  width: 200px;
+  height: 200px;
+}
+
+#image_container {
+	margin: 0 auto;
+	width: 200px;
+	height: 230px;
+	display: flex;
+	flex-direction: column;
+}
+
+.pat_img img {
+  border-radius: 50%;
+  object-fit: cover; /* 비율 그대로 유지 */
+}
+
+.name_wrap,
+.birth_wrap,
+.age_wrap {
+  padding: 10px 0;
+}
+
+.name_input,
+.birth_input {
+  border: none;
+  border-bottom: 1px solid silver;
+  padding: 5px 0;
+}
+
+.age_wrap input {
+	width: 25px;
+	text-align: right;
+	font-size: 16px;
+}
+
+.name_input:focus,
+.birth_input:focus {
+  outline: 1px solid #ffc6a6;
+  border-bottom: none;
+  border-radius: 10px;
+}
+
+.birth_wrap input[type="button"] {
+ background-color: #fff;
+ border: 1px solid #86C6F4;
+ color: #86C6F4;
+ border-radius: 5px;
+ cursor: pointer;
+}
+
+.birth_wrap input[type="button"]:hover {
+	background-color: #86C6F4;
+	color: #fff;
+	
+
+}
+
+/* 팻 체크 */
+.radio_wrap {
+  padding: 10px;
+}
+
+.check_btn input {
+  display: none;
+}
+
+.check_btn label {
+  background-color: rgb(161, 161, 161);
+  color: rgb(39, 39, 39);
+  padding: 0.5rem 1rem;
+  border-radius: 1rem;
+  user-select: none;
+  cursor: pointer;
+}
+
+/* 성별 체크 */
+.gender_wrap {
+  padding: 10px;
+}
+
+.gender_btn input[type="radio"] {
+  display: none;
+}
+
+.gender_btn input[type="radio"] + span {
+  display: inline-block;
+  padding: 10px 50px;
+  border: 1px solid #dfdfdf;
+  background-color: #ffffff;
+  text-align: center;
+  cursor: pointer;
+}
+
+.gender_btn input[type="radio"]:checked + span {
+  background-color: #ffc6a6;
+  color: #ffffff;
+}
+
+/* 버튼 */
+.btn_wrap {
+  padding: 10px;
+}
+.btn_wrap input {
+  font-size: 18px;
+  width: 100px;
+  height: 30px;
+  border: 1px solid #ffc6a6;
+  border-radius: 2em;
+  background-color: white;
+  color: black;
+  font-family: "Cafe24Oneprettynight";
+}
+
+.btn_wrap input:hover {
+  border-radius: 2em;
+  background-color: #ffc6a6;
+  color: black;
+  border: 1px solid #ffc6a6;
+  cursor: pointer;
+}

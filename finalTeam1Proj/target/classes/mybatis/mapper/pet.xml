@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="petMapper">
+	<select id="generateSeq" resultType="_int">
+		SELECT finaladmin.PETS_SEQ.NEXTVAL FROM DUAL
+	</select>
+	
+	<insert id="insertPet" parameterType="pet">
+		INSERT INTO finaladmin.PETS(PNO, MID, SID, PETNAME,SEX,BIRTHDAY, AGE)
+		VALUES(#{pno}, #{mid}, #{sid}, #{petname}, #{sex}, #{birthday}, #{age})
+	</insert>
+	
+	<insert id="insertPetFile" parameterType="pfile">
+		INSERT INTO finaladmin.P_FILES
+		VALUES(#{pno}, #{filename}, #{fileurl}, #{filesize})
+	</insert>
+	
+	<select id="allMyPets" resultType="pet">
+		SELECT A.PNO, A.MID, B.USERNAME, A.SID
+			 , A.PETNAME, A.SEX, A.BIRTHDAY, A.AGE
+			 , C.FILENAME, C.FILEURL, C.FILESIZE
+		  FROM finaladmin.PETS A
+		  JOIN finaladmin.MEMBERS B
+		    ON A.MID = B.MID
+		  JOIN finaladmin.P_FILES C
+		    ON A.PNO = C.PNO
+		 WHERE A.MID = #{mid}
+		 ORDER BY A.PNO
+	</select>
+	
+	<delete id="delete">
+		DELETE FROM finaladmin.PETS WHERE PNO = #{pno}
+	</delete>
+</mapper>

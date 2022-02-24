@@ -1,8 +1,10 @@
 package com.my.web.board.controller;
 
+import java.io.IOException;
 import java.util.*;
 
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.ServletException;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -17,6 +19,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.my.web.account.model.AccountDTO;
 import com.my.web.board.model.*;
+import com.oreilly.servlet.MultipartRequest;
+import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
 @Controller
 public class BoardController {
@@ -55,26 +59,71 @@ public class BoardController {
         return "board/add";
     }
     
+//	@RequestMapping(value="/board/add", method=RequestMethod.POST)
+//    public String boardAdd(BoardDTO boardDTO, HttpSession session, Model model) {
+//
+//		AccountDTO account = (AccountDTO)session.getAttribute("account");
+//		
+//		if(account.getId() != boardDTO.getMemid()) {
+//			boardDTO.setMemid(account.getId());
+//			System.out.println("전달된 값과 세션에 저장된 값이 다름니다.");
+//		}
+//
+//		// 저장이 되면 게시판 테이블의 ID 컬럼의 값을 반환한다.
+//		int id = service.insertBoard(boardDTO);
+//		
+//		if(id > 0) {
+//			// 저장 성공 후 해당 게시글의 id값을 받아 상세 페이지 이동
+//			return "redirect:/board/detail?id=" + id;
+//		}
+//		
+//		System.out.println("[boardAdd] 저장 작업중 문제 발생!!");
+//		return "board/add";
+//    }
+	
 	@RequestMapping(value="/board/add", method=RequestMethod.POST)
-    public String boardAdd(BoardDTO boardDTO, HttpSession session, Model model) {
-
+    public String boardAdd(HttpSession session, BoardDTO boardDTO, HttpServletRequest request) throws ServletException, IOException {
 		AccountDTO account = (AccountDTO)session.getAttribute("account");
 		
 		if(account.getId() != boardDTO.getMemid()) {
+			System.out.println(account.getId());
+			System.out.println(boardDTO.getMemid());
 			boardDTO.setMemid(account.getId());
 			System.out.println("전달된 값과 세션에 저장된 값이 다름니다.");
 		}
+		
+		MultipartRequest multi = new MultipartRequest(
+				request, 
+				request.getServletContext().getRealPath("/upload"),  // ServletContext 의 실제 경로를 알아내어 "/upload" 경로 추가
+				1024*1024*10, // 파일 크키; 10 MByte
+				"utf-8", // 인코딩
+				new DefaultFileRenamePolicy()); // 파일명이 동일한 경우 새로운 파일명 생성
 
-		// 저장이 되면 게시판 테이블의 ID 컬럼의 값을 반환한다.
-		int id = service.insertBoard(boardDTO);
+		String title = multi.getParameter("title");
+		int memid = Integer.parseInt(multi.getParameter("memid"));
+		String content = multi.getParameter("content");
 		
-		if(id > 0) {
-			// 저장 성공 후 해당 게시글의 id값을 받아 상세 페이지 이동
-			return "redirect:/board/detail?id=" + id;
+		String fileName = multi.getFilesystemName("upload_file");
+		String fileUrl = request.getContextPath() + "/upload/" + fileName; // 파일 접근 위치
+		long fileSize = multi.getFile("upload_file").length();
+		
+		BoardDTO dto1 = new BoardDTO();
+		dto1.setTitle(title);
+		dto1.setMemid(memid);
+		dto1.setContent(content);
+		
+		UploadFileDTO dto2 = new UploadFileDTO();
+		dto2.setFileName(fileName);
+		dto2.setFileUrl(fileUrl);
+		dto2.setFileSize(fileSize);
+		
+		boolean res = service.add(dto1, dto2);
+		if(res) {
+			return "redirect:/board";
+		} else {
+			System.out.println("[boardAdd] 저장 작업중 문제 발생!!");
+			return "/board/add";
 		}
-		
-		System.out.println("[boardAdd] 저장 작업중 문제 발생!!");
-		return "board/add";
     }
     
 	@RequestMapping(value="/board/modify", method=RequestMethod.GET)
@@ -172,11 +221,12 @@ public class BoardController {
     	}
     	
         BoardDTO data = service.getBoard(id);
+        UploadFileDTO upload = service.getUpload(data.getId());
         
         session.setAttribute("board-"+id, true); // 세션 생성; 키, 값
         
-        
         model.addAttribute("data", data);
+        model.addAttribute("upload", upload);
         return "board/detail";
     }
     

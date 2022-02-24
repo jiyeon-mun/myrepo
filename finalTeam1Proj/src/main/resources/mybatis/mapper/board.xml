@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "=//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="boardMapper">
+	<select id="all" resultType="com.kh.team1.board.model.BoardDTO">
+      SELECT A.BNO, A.CATID, B.CATNAME, A.MID
+           , C.USERNAME, A.TITLE, A.VCNT
+           , A.GCNT, A.WRITEDATE
+          FROM BOARD A
+          JOIN B_CAT B
+            ON A.CATID = B.BCID
+          JOIN MEMBERS C
+            ON A.MID = C.MID
+            WHERE 1 = 1
+            <if test="keynum==1 and keyword != null">
+                and A.title like '%'||#{keyword}||'%' 
+            </if>
+            <if test="keynum==1 and keyword != null and options ==1">
+                and A.title like '%'||#{keyword}||'%' and B.CATNAME like '의료/건강'
+            </if>
+            <if test="keynum==1 and keyword != null and options ==2">
+                and A.title like '%'||#{keyword}||'%' and B.CATNAME like '감동'
+            </if>
+            <if test="keynum==1 and keyword != null and options ==3">
+                and A.title like '%'||#{keyword}||'%' and B.CATNAME like '입양 공고'
+            </if>
+            <if test="keynum==1 and keyword != null and options ==4">
+                and A.title like '%'||#{keyword}||'%' and B.CATNAME like '재미'
+            </if>
+            <if test="keynum==1 and keyword != null and options ==5">
+                and A.title like '%'||#{keyword}||'%' and B.CATNAME like '상품평'
+            </if>
+            <if test="keynum==2 and keyword !=null">
+               and C.username like '%'||#{keyword}||'%'
+            </if>
+             <if test="keynum==2 and keyword !=null and options == 1">
+               and C.username like '%'||#{keyword}||'%' and B.CATNAME like '의료/건강'
+            </if>
+             <if test="keynum==2 and keyword !=null and options == 2">
+               and C.username like '%'||#{keyword}||'%' and B.CATNAME like '감동'
+            </if>
+             <if test="keynum==2 and keyword !=null and options == 3">
+               and C.username like '%'||#{keyword}||'%' and B.CATNAME like '입양 공고'
+            </if>
+             <if test="keynum==2 and keyword !=null and options == 4">
+               and C.username like '%'||#{keyword}||'%' and B.CATNAME like '재미'
+            </if>
+             <if test="keynum==2 and keyword !=null and options == 5">
+               and C.username like '%'||#{keyword}||'%' and B.CATNAME like '상품평'
+            </if>
+         ORDER BY A.BNO DESC
+   </select>
+	<select id="detail" resultType="com.kh.team1.board.model.BoardDTO">
+		SELECT A.BNO, A.CATID, B.CATNAME, A.MID
+		     , C.USERNAME , A.TITLE, A.CONTENT
+		     , A.VCNT, A.GCNT, A.BCNT, A.WRITEDATE
+  		  FROM BOARD A
+  		  JOIN B_CAT B
+    		ON A.CATID = B.BCID
+  		  JOIN MEMBERS C
+    		ON A.MID = C.MID
+ 		 WHERE A.BNO = #{bno}
+	</select>
+	
+	<select id="select" resultType="_int">
+		SELECT BOARD_SEQ.NEXTVAL FROM DUAL
+	</select>
+	
+	<insert id="add" parameterType="com.kh.team1.board.model.BoardDTO">
+		INSERT INTO BOARD(BNO, CATID, MID, TITLE, CONTENT) 
+		VALUES(#{bno}, #{catid}, #{mid}, #{title}
+			 , #{content})
+	</insert>
+	<insert id="fileAdd" parameterType="com.kh.team1.board.model.B_FilesDTO">
+		INSERT INTO B_FILES(BFID, BNO, FILENAME, FILEURL, FILESIZE) 
+		VALUES(B_FILES_SEQ.NEXTVAL, #{bno}, #{fileName}, #{fileUrl}
+			 , #{fileSize})
+	</insert>
+	
+	<select id="BoardFile" parameterType="_int" resultType="com.kh.team1.board.model.B_FilesDTO">
+		SELECT * FROM B_FILES
+		 WHERE BNO = #{bno}
+	</select>
+
+	<update id="update" parameterType="com.kh.team1.board.model.BoardDTO">
+		UPDATE BOARD
+		   SET CATID = #{catid},
+		       TITLE = #{title},
+		   	   CONTENT = #{content},
+		   	   WRITEDATE = SYSDATE
+		 WHERE BNO = #{bno}
+	</update>
+	
+	<update id="updateBfile" parameterType="com.kh.team1.board.model.B_FilesDTO">
+		UPDATE B_FILES
+		   SET FILENAME = #{fileName},
+		       FILEURL = #{fileUrl},
+		   	   FILESIZE = #{fileSize}
+		 WHERE BNO = #{bno}
+	</update>
+	
+ 	<delete id="delete">
+		DELETE FROM BOARD
+		 WHERE BNO = #{bno}
+	</delete>
+	<update id="updateViewCount">
+		UPDATE BOARD
+		   SET VCNT = VCNT + 1
+		 WHERE BNO = #{bno}
+	</update>
+	
+	<select id="catAll" resultType="com.kh.team1.board.model.BoardCategoryDTO" parameterType="com.kh.team1.board.model.BoardCategoryDTO">
+		SELECT * FROM B_CAT
+	</select>
+	
+	<update id="updateGoodCount">
+		UPDATE BOARD
+		   SET GCNT = GCNT + 1
+		 WHERE BNO = #{bno}
+	</update>
+	
+	<update id="updateBadCount">
+		UPDATE BOARD
+		   SET BCNT = BCNT + 1
+		 WHERE BNO = #{bno}
+	</update>
+</mapper>

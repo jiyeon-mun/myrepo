@@ -7,5 +7,6 @@
 		<typeAlias type="com.my.web.account.model.AccountDTO" alias="account" />
 		<typeAlias type="com.my.web.account.model.AccountInfoDTO" alias="accountInfo" />
 		<typeAlias type="com.my.web.board.model.BoardDTO" alias="board" />
+		<typeAlias type="com.my.web.board.model.UploadFileDTO" alias="upload" />
 	</typeAliases>
 </configuration>

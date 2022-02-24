@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<typeAliases>
+		<typeAlias type="com.kh.team1.account.model.AccountDTO" alias="account"/>
+		<typeAlias type="com.kh.team1.diary.model.DiaryDTO" alias="diary"/>
+		<typeAlias type="com.kh.team1.diary.model.DiaryFileDTO" alias="dfile"/>
+		<typeAlias type="com.kh.team1.diary.model.CommentDTO" alias="comment"/>
+		<typeAlias type="com.kh.team1.dpet.model.PetDTO" alias="pet"/>
+		<typeAlias type="com.kh.team1.dpet.model.PetFileDTO" alias="pfile"/>
+	</typeAliases>
+</configuration>

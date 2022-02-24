@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0/EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="accountMapper">
+	<select id="countingUser" parameterType="string" resultType="_int">
+	  SELECT COUNT(*) FROM MEMBERS
+	  WHERE USERNAME = #{username}
+	</select>
+	
+	<insert id="insert" parameterType="account">
+		INSERT INTO finaladmin.MEMBERS(MID, USERNAME, PASSWORD)
+		VALUES(finaladmin.MEMBERS_SEQ.NEXTVAL, #{username}, #{password})
+	</insert>
+	
+	<select id="login" resultType="account">
+		SELECT *
+		  FROM finaladmin.MEMBERS
+		 WHERE USERNAME = #{username} 
+		   AND PASSWORD = #{password}
+	</select>
+	
+	<select id="selectId" resultType="account">
+		SELECT USERNAME, PASSWORD, JOINDATE, LOGINDATE
+          FROM MEMBERS
+		WHERE MID = #{mid}
+    </select>
+    
+	<update id="updatePassword" parameterType="account">
+		UPDATE MEMBERS
+		   SET PASSWORD = #{password}
+		 WHERE MID = #{mid}
+	</update>
+	
+	<delete id="deleteAccount" parameterType="account">
+		DELETE FROM MEMBERS
+		WHERE MID = #{mid}
+	</delete>
+	
+</mapper>

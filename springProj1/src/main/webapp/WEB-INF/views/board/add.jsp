@@ -19,7 +19,7 @@
 	</header>
 	<section class="container">
 		<h3>게시글 등록</h3>
-		<form action="/board/add" method="post">
+		<form action="/board/add" method="post" enctype="multipart/form-data">
 			<div class="card text-dark bg-light">
 				<div class="card-body">
 					<input type="hidden" name="memid" value="${sessionScope.account.id}">
@@ -29,6 +29,9 @@
 					<div class="row mb-3">
 						<input class="form-control" type="text" name="writer"
 						 value="${sessionScope.account.username}" readonly>
+					</div>
+					<div class="row mb-3">
+						<input type="file" name="upload_file">
 					</div>
 					<div>
 						<textarea id="ckeditor" rows="10" name="content"></textarea>

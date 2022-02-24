@@ -69,7 +69,7 @@ function ajaxSendBad() {
 			</div>
 			<div class="card-body">
 	            <h6 class="card-subtitle text-muted mb-4">
-	            	<i class="fas fa-list"></i> ${data.id}
+	            	<i class="fas fa-list"></i> ${data.id} <!-- 게시글 번호 -->
 	                 ·
 	                <i class="far fa-user"></i> ${data.memname}
 	                 ·
@@ -82,6 +82,9 @@ function ajaxSendBad() {
 	                <i class="far fa-clock"></i> ${data.createdate}
 	            </h6>
 	            <p class="card-text">${data.content}</p>
+	            <div>
+	            	파일 : <img alt="img" src="${upload.fileUrl }">${upload.fileName }
+	            </div>
 			</div>
 			<div>
 				<button type="button" onclick="ajaxSendGood();">추천</button>

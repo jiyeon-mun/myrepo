@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans:beans xmlns="http://www.springframework.org/schema/mvc"
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+   xmlns:beans="http://www.springframework.org/schema/beans"
+   xmlns:context="http://www.springframework.org/schema/context"
+   xsi:schemaLocation="http://www.springframework.org/schema/mvc https://www.springframework.org/schema/mvc/spring-mvc.xsd
+      http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
+      http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
+
+   <!-- DispatcherServlet Context: defines this servlet's request-processing infrastructure -->
+   
+   <!-- Enables the Spring MVC @Controller programming model -->
+   <annotation-driven />
+
+   <!-- Handles HTTP GET requests for /resources/** by efficiently serving up static resources in the ${webappRoot}/resources directory -->
+   <!-- static files 위치 정의
+      http://localhost/resources/** 요청을 하면 src/main/webapp/resources 영역과 맵핑됨. -->
+   <resources mapping="/img/**" location="/resources/images/" />
+   <resources mapping="/static/**" location="/resources/static/" />
+   <resources mapping="/upload/bfiles/**" location="/upload/bfiles/" /> <!-- 게시판 첨부 이미지 -->
+   <resources mapping="/upload/pfiles/**" location="/upload/pfiles/" /> <!-- 펫 첨부 이미지 -->
+   <resources mapping="/upload/dfiles/**" location="/upload/dfiles/" /> <!-- 일기 첨부 이미지 -->
+
+   <!-- Resolves views selected for rendering by @Controllers to .jsp resources in the /WEB-INF/views directory -->
+   <beans:bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+      <beans:property name="prefix" value="/WEB-INF/views/" />
+      <beans:property name="suffix" value=".jsp" />
+   </beans:bean>
+   
+   <context:component-scan base-package="com.kh.team1" />
+   
+      <!-- Database 연결을 위한 Mybatis 구성  -->    
+   
+   <beans:bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+      <beans:property name="driverClassName" value="oracle.jdbc.OracleDriver"></beans:property>
+      <beans:property name="url" value="jdbc:oracle:thin:@db202202051024_medium?TNS_ADMIN=C:/Users/wldus/eclipse-workspace/finalTeam1Proj/src/main/resources/oracle/MOON_Wallet_finalDB"></beans:property>
+      <beans:property name="username" value="finaladmin"></beans:property>
+      <beans:property name="password" value="Admin12#$fin"></beans:property>
+   </beans:bean>
+   
+
+   <!-- DataSource 와 마이바티스 연결 -->
+   <beans:bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+      <beans:property name="dataSource" ref="dataSource"></beans:property>
+      <beans:property name="configLocation" value="classpath:/mybatis/mybatis-config.xml"></beans:property>
+      <beans:property name="mapperLocations" value="classpath:/mybatis/mapper/*.xml"></beans:property>
+   </beans:bean>
+
+   <!-- DAO 에서 사용할 SQL 세션 생성용 빈 -->
+   <beans:bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate">
+      <beans:constructor-arg index="0" ref="sqlSessionFactory"></beans:constructor-arg>
+   </beans:bean>
+   
+   <!-- 인터셉터 등록 -->
+   <interceptors>
+      <interceptor>
+         <mapping path="/diary/add" />
+         <mapping path="/diary/gcnt" />
+         <mapping path="/diary/list" />
+         <mapping path="/memInfo" />
+         <mapping path="/board/*" />
+         <beans:bean class="com.kh.team1.interceptor.LoginCheckInterceptor"></beans:bean>
+      </interceptor>
+   </interceptors>
+   
+</beans:beans>

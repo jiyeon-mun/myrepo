@@ -46,7 +46,7 @@ public class BoardDAO {
         return false;
     }
     
-    public boolean insert(BoardDTO dto) {
+    public boolean insert(BoardDTO dto) { // 게시글 등록
     	int result = 0;
         result = this.session.insert("boardMapper.insertBoard", dto);
         if(result == 1) {
@@ -54,6 +54,15 @@ public class BoardDAO {
         }
         return false;
     }
+    
+    public boolean insert(UploadFileDTO dto) { // 게시글 첨부파일 등록
+		int result = 0;
+		result = this.session.insert("boardMapper.insertUpload", dto);
+		if(result == 1) {
+			return true;
+		}
+    	return false;
+	}
 
     public int generateSeq() {
     	return this.session.selectOne("boardMapper.generateSeq");
@@ -69,6 +78,10 @@ public class BoardDAO {
 	
 	public int updateBadCount(int id) {
 		return this.session.update("boardMapper.updateBadCount", id);
+	}
+
+	public UploadFileDTO selectUploadFile(int id) {
+		return this.session.selectOne("boardMapper.selectBoardFile", id);
 	}
     
 }

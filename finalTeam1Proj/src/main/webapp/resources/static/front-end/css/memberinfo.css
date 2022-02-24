@@ -1,0 +1,175 @@
+@import url(./haf.css);
+
+@font-face {
+  font-family: "Cafe24Oneprettynight";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_twelve@1.1/Cafe24Oneprettynight.woff")
+    format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+    font-family: 'KyoboHandwriting2020A';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2112@1.0/KyoboHandwriting2020A.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+body {
+  font-family: "Cafe24Oneprettynight";
+  margin: 0;
+  padding: 0;
+
+}
+.container {
+  width: 1140px;
+  margin: 0 auto;
+}
+
+.info_list {
+  height: 515px;
+  display: flex;
+  flex-direction: row;
+}
+
+.list-group {
+  width: 15%;
+  padding: 15px 0;
+}
+
+.list-group a {
+  display: flex;
+  justify-content: center;
+  margin: 30px 0;
+  padding: 20px 0;
+}
+
+.list-group a:hover {
+  cursor: pointer;
+  background-color: bisque;
+  border-radius: 10px;
+}
+
+.list-group a:active {
+  background-color: bisque;
+  border-radius: 10px;
+}
+
+#myinfo {
+  width: 100%;
+}
+
+#myinfo .info_title,
+#expire .info_title,
+#changepw .info_title {
+  font-size: 28px;
+  font-weight: bolder;
+  margin: 50px 0 3px 30px;
+}
+
+#expire .info_title,
+#changepw .info_title {
+  padding-bottom: 15px;
+}
+
+#myinfo .account {
+  font-size: 22px;
+  margin: 15px 0 15px 30px;
+  display: flex;
+  flex-direction: column;
+}
+
+#myinfo .account label{
+	padding: 12px 0;
+}
+
+
+
+#changepw {
+  width: 100%;
+}
+
+
+#changepw .password_wrap {
+  font-size: 22px;
+  margin: 15px 0 15px 30px;
+}
+
+#changepw .password_wrap input[type="password"] {
+  width: 600px;
+  padding: 5px;
+  border: none;
+  border-bottom: 2px solid black;
+}
+
+#changepw .password_wrap input[type="password"]:focus {
+  outline: none;
+}
+
+#changepw .password_msg {
+  font-size: 18px;
+  margin: 15px 0 15px 180px;
+  color: rgba(252, 71, 71, 0.829);
+}
+
+#changepw .password_btn {
+  margin-right: 30px;
+  float: right;
+}
+
+
+#expire {
+  width: 100%;
+}
+
+
+#expire .expire_wrap {
+  font-size: 22px;
+  margin: 15px 0 15px 30px;
+}
+
+#expire .password_btn {
+  margin-right: 30px;
+  float: right;
+}
+
+#expire .current_password input[type="password"] {
+  width: 600px;
+  padding: 5px;
+  border: none;
+  border-bottom: 2px solid black;
+}
+#expire .current_password input[type="password"]:focus {
+  outline: none;
+}
+
+
+
+
+.raise:hover,
+.raise:focus {
+    box-shadow: 0 0.5em 0.5em -0.4em var(--hover);
+    transform: translateY(-0.25em);
+    color: #ffa260;
+}
+
+button {
+    font-family: 'KyoboHandwriting2020A';
+    background: papayawhip;
+    border: 2px solid;
+    line-height: 0.5;
+    margin: 0.5em;
+    padding: 1em 2em;
+    border: 0;
+    outline: 0;
+    border-radius: 40px 80px;
+    color: gray;
+    cursor: pointer;
+  }
+  
+  h1 { font-weight: 100; }
+  
+  code { 
+    color: #e4cb58;
+    font: inherit;
+  }

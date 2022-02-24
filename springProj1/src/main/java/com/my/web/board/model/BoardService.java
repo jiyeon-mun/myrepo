@@ -45,7 +45,7 @@ public class BoardService {
     }
     
     public int insertBoard(BoardDTO dto) {
-    	// 저장된 데이터(게시글)의 ID 값을 알아오는 작업이 필요
+    	// 저장된 마지막 데이터(게시글)의 ID의 다음 값을 알아오는 작업
     	int id = dao.generateSeq();
     	dto.setId(id);
     	
@@ -77,6 +77,29 @@ public class BoardService {
 			return dao.selectId(id).getBcnt();
 		}
 		return -1;
+	}
+
+	public boolean add(BoardDTO dto1, UploadFileDTO dto2) {
+		boolean res = false;
+		
+		int id = dao.generateSeq();
+		dto1.setId(id);
+		
+		if(dao.insert(dto1))  { // 게시글 내용 삽입
+			dto2.setBno(dto1.getId());
+			if(dao.insert(dto2)) { // 게시글 첨부파일 삽입
+				res = true;
+			} else {
+				System.out.println("insertUpload 과정 에러");
+			}
+		} else {
+			System.out.println("insertBoard 과정 에러");
+		}
+		return res;
+	}
+
+	public UploadFileDTO getUpload(int id) {		
+		return dao.selectUploadFile(id);
 	}
 
 }

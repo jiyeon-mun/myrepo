@@ -66,7 +66,7 @@ public class AccountService {
 				dto.setJoinDate(data.getJoinDate());
 				dto.setDormant(data.getDormant());
 				dto.setExpire(data.getExpire());
-				dto.setAdmin(dto.getAdmin());
+				dto.setAdmin(data.getAdmin());
 				dto.setStaff(data.getStaff());
 				return true;
 			} else {

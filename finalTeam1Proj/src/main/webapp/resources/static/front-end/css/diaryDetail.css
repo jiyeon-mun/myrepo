@@ -1,0 +1,192 @@
+@import url(./haf.css);
+
+@font-face {
+  font-family: "Cafe24Oneprettynight";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_twelve@1.1/Cafe24Oneprettynight.woff")
+    format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+.user_name {
+	font-size: 18px;
+	width: 1140px;
+	margin: 0 auto;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Cafe24Oneprettynight";
+}
+
+.diary_container {
+  width: 45vw;
+  margin: 0 auto;
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+.diary_wrap {
+  margin: 0 auto;
+  border: 1px solid black;
+  border-radius: 5px;
+  box-shadow: 1px 3px 5px 0px rgba(141, 140, 140, 0.493);
+}
+
+
+
+table {
+  margin: 0 auto;
+  border-collapse: collapse;
+}
+
+table td {
+  text-align: center;
+}
+
+table th {
+  text-align: left;
+  vertical-align: middle;
+}
+
+.diary_img td img {
+  width: 40vw;
+  border: 1px solid black;
+}
+
+.diary_content td {
+  height: 200px;
+  word-break: break-all;
+}
+
+.diary_content td:nth-child(2) {
+  vertical-align: bottom;
+}
+
+.diary_heart td {
+  padding-top: 10px;
+}
+
+.diary_heart td i:first-child:hover {
+  color: red;
+  cursor: pointer;
+  transform: scale(1.3);
+  transition: all 0.35s;
+}
+
+.diary_heart td:nth-child(2) {
+  text-align: left;
+}
+
+.list_btn td {
+  text-align: right;
+}
+
+.list_btn td:first-child {
+	width: 80px;
+}
+@font-face {
+    font-family: 'KyoboHandwriting2020A';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2112@1.0/KyoboHandwriting2020A.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+.raise:hover,
+.raise:focus {
+    box-shadow: 0 0.5em 0.5em -0.4em var(--hover);
+    transform: translateY(-0.25em);
+    color: #ffa260;
+}
+
+button {
+    font-family: 'KyoboHandwriting2020A';
+    background: papayawhip;
+    border: 2px solid;
+    line-height: 0.5;
+    margin: 0.5em;
+    padding: 1em 2em;
+    border: 0;
+    outline: 0;
+    border-radius: 40px 80px;
+    color: gray;
+    cursor: pointer;
+  }
+  
+  h1 { font-weight: 100; }
+  
+  code { 
+    color: #e4cb58;
+    font: inherit;
+  }
+
+.list_btn form {
+  margin-bottom: 0;
+  width: 80px;
+  float: right;
+  margin-right: 30px;
+}
+
+.list_btn form button {
+	width: 100%;
+}
+
+
+.reply_container {
+  margin-top: 10px;
+
+}
+
+.reply_container .reply_input_form {
+ display: flex;
+ justify-content: space-between;
+ margin: 0 15px;
+}
+
+.reply_container input {
+ width: 78%;
+}
+
+.reply_container .reply_submit_btn {
+ width: 15%;
+}
+
+.reply_add_wrap {
+ width: 90%;
+ margin: 0 auto;
+}
+
+.reply_content_wrap {
+ margin-top: 15px;
+}
+
+
+
+.reply_content_wrap table td {
+ border-bottom: 1px solid black;
+ padding: 10px 0;
+}
+
+
+.reply_content_wrap table td:nth-child(3) {
+ text-align: left;
+}
+
+.reply_content_wrap table td {
+ vertical-align: middle;
+}
+
+.reply_content_wrap form{
+ margin-bottom: 0;
+}
+
+@media screen and (max-width: 790px) {
+  .diary_reply td button[type="submit"] {
+    display: none; /* 창 작아지면 댓글안보일까봐 없앴음. */
+  }
+
+  .diary_content td button[type="submit"] {
+    width: 50px;
+  }
+}

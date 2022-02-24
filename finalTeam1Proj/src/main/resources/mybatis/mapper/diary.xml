@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="diaryMapper">
+	<select id="all" resultType="diary">
+		SELECT A.DNO, A.MID, B.USERNAME, A.TITLE, A.CONTENT, A.GCNT, A.WRITEDATE
+		  FROM finaladmin.DIARY A
+		  JOIN finaladmin.MEMBERS B
+		    ON A.MID = B.MID
+		 ORDER BY A.DNO DESC
+	</select>
+	
+	<select id="allFiles" resultType="dfile">
+		SELECT * FROM finaladmin.D_FILES ORDER BY DNO DESC
+	</select>
+	
+	<select id="allMine" resultType="diary">
+		SELECT A.DNO, A.MID, B.USERNAME, A.TITLE, A.CONTENT
+			 , A.GCNT, A.WRITEDATE, C.FILENAME, C.FILEURL, C.FILESIZE
+		  FROM finaladmin.DIARY A
+		  JOIN finaladmin.MEMBERS B
+		    ON A.MID = B.MID
+		  JOIN finaladmin.D_FILES C
+		    ON A.DNO = C.DNO
+		 WHERE A.MID = #{mid}
+		 ORDER BY A.DNO DESC
+	</select>
+	
+	<select id="generateSeq" resultType="_int">
+		SELECT finaladmin.DIARY_SEQ.NEXTVAL FROM DUAL
+	</select>
+	
+	<insert id="insertDiary" parameterType="diary">
+		INSERT INTO finaladmin.DIARY(DNO, MID, TITLE, CONTENT)
+		VALUES(#{dno}, #{mid}, #{title}, #{content})
+	</insert>
+	
+	<insert id="insertDiaryFile" parameterType="dfile">
+		INSERT INTO finaladmin.D_FILES
+		VALUES(#{dno}, #{filename}, #{fileurl}, #{filesize})
+	</insert>
+	
+	<select id="detail" resultType="diary">
+		SELECT A.DNO, A.MID, B.USERNAME, A.TITLE, A.CONTENT, A.GCNT, A.WRITEDATE
+		  FROM finaladmin.DIARY A
+		  JOIN finaladmin.MEMBERS B
+		    ON A.MID = B.MID
+		 WHERE A.DNO = #{dno}
+	</select>
+	
+	<select id="detailFile" resultType="dfile">
+		SELECT * FROM finaladmin.D_FILES
+		 WHERE DNO = #{dno}
+	</select>
+	
+	<select id="selectComments" resultType="comment">
+		SELECT A.DNO, B.DCID, B.MID, C.USERNAME, B.CONTENT, B.WRITEDATE 
+		  FROM finaladmin.DIARY A
+		  JOIN finaladmin.D_COMMENTS B
+		    ON A.DNO = B.DNO
+		  JOIN finaladmin.MEMBERS C
+		    ON B.MID = C.MID
+		 WHERE A.DNO = #{dno}
+		 ORDER BY B.DCID DESC
+	</select>
+	
+	<update id="updateGoodCount">
+		UPDATE finaladmin.DIARY
+		   SET GCNT = GCNT + 1
+		 WHERE DNO = #{dno}
+	</update>
+	
+	<insert id="insetComment" parameterType="comment">
+		INSERT INTO finaladmin.D_COMMENTS(DCID, DNO, MID, CONTENT)
+		VALUES(finaladmin.D_COMMENTS_SEQ.NEXTVAL, #{dno}, #{mid}, #{content})
+	</insert>
+	
+	<delete id="deleteComment" parameterType="comment">
+		DELETE FROM finaladmin.D_COMMENTS
+		 WHERE DNO = #{dno} 
+		   AND DCID = #{dcid}
+	</delete>
+	
+	<update id="updateDiary" parameterType="diary">
+		UPDATE finaladmin.DIARY
+		   SET TITLE = #{title},
+		       CONTENT = #{content},
+		   	   WRITEDATE = SYSDATE
+		 WHERE DNO = #{dno}
+	</update>
+	
+	<update id="updateDiaryFile" parameterType="dfile">
+		UPDATE finaladmin.D_FILES
+		   SET FILENAME = #{filename},
+		       FILEURL = #{fileurl},
+		       FILESIZE = #{filesize}
+		 WHERE DNO = #{dno}
+	</update>
+	
+	<delete id="delete">
+		DELETE FROM finaladmin.DIARY WHERE DNO = #{dno}
+	</delete>
+</mapper>
